@@ -9,7 +9,6 @@ function App() {
     <div className="App">
       <Header />  
       {CustRoutes}
-      <h1>Hello</h1>
       {TruckRoutes}
     </div>
   );
