@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
-import './component/Header'
-import './routes/CustRoutes'
-import './routes/TruckRoutes'
+import Header from './component/Header'
+import CustRoutes from './routes/CustRoutes'
+import CustRoutes from'./routes/TruckRoutes'
 
 function App() {
   return (
     <div className="App">
       <Header />  
       {CustRoutes}
-      <h1>Hello</h1>
       {TruckRoutes}
     </div>
   );
