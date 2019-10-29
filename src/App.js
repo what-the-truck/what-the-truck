@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './component/Header'
 import CustRoutes from './routes/CustRoutes'
-import CustRoutes from'./routes/TruckRoutes'
+import TruckRoutes from'./routes/TruckRoutes'
 
 function App() {
   return (

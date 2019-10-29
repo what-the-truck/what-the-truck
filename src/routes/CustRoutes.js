@@ -1,10 +1,14 @@
 import {Switch, Route} from 'react-router-dom'
+import React from 'react'
 import Landing from '../component/users/Landing/Landing'
 import TruckList from '../component/users/TruckList/TruckList'
 import TruckInfo from '../component/users/TruckInfo/TruckInfo'
 import TruckMenuCust from '../component/users/TruckMenuCust/TruckMenuCust'
-import EventList from '../component/users/EventList'
+import EventList from '../component/users/EventList/EventList'
 import EventInfo from '../component/users/EventInfo/EventInfo'
+import CustRegister from '../component/CustRegister'
+import TruckRegister from '../component/TruckRegister'
+
 
 
 export default ( 
@@ -15,5 +19,7 @@ export default (
         <Route path ='/truckmenu' component={TruckMenuCust} />
         <Route path ='/eventlist' component={EventList} />
         <Route path ='/eventinfo/:id' component={EventInfo} />
+        <Route path ='/custregister' component={CustRegister} />
+        <Route path ='/truckregister' component={TruckRegister} />
     </Switch>
 )
