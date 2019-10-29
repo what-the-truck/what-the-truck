@@ -8,6 +8,7 @@ import EventList from '../component/users/EventList/EventList'
 import EventInfo from '../component/users/EventInfo/EventInfo'
 import CustRegister from '../component/CustRegister'
 import TruckRegister from '../component/TruckRegister'
+import RegisterOptions from '../component/RegisterOptions'
 
 
 
@@ -19,6 +20,7 @@ export default (
         <Route path ='/truckmenu' component={TruckMenuCust} />
         <Route path ='/eventlist' component={EventList} />
         <Route path ='/eventinfo/:id' component={EventInfo} />
+        <Route path = '/registeroptions' component={RegisterOptions} />
         <Route path ='/custregister' component={CustRegister} />
         <Route path ='/truckregister' component={TruckRegister} />
     </Switch>
