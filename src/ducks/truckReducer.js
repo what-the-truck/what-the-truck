@@ -1,5 +1,10 @@
 //initial state
 const initialState = {
+  loggedIn:false,
+  truckId:null,
+  truck:null,
+  name:'',
+  email:'',
   foodTruck: [],
   events: [],
   attend: [],
@@ -7,6 +12,7 @@ const initialState = {
 };
 
 //Action constants
+const SET_TRUCK = 'SET_TRUCK'
 const GET_FOOD_TRUCK = 'GET_FOOD_TRUCK';
 const GET_FOLLOWS ='GET_FOLLOWS';
 const GET_EVENTS = 'GET_EVENTS';
@@ -40,10 +46,19 @@ export function getAttend(attend) {
   };
 }
 
+export function setTruck(truck){
+  return {
+    type:SET_TRUCK,
+    payload:truck
+  }
+}
+
 //truckReducer
 export default function truckReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case SET_TRUCK:
+      return {...state,...payload}
     case GET_FOOD_TRUCK:
       const { foodTruck } = payload;
       return { ...state, foodTruck };
