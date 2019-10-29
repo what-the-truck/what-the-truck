@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import CustRoutes from  './routes/CustRoutes'
 import TruckRoutes from './routes/TruckRoutes'
 import Header from './component/Header'
+import axios from 'axios'
 
 
-function App() {
+class App extends Component {
+constructor(){
+super()
+
+}
+componentDidMount(){
+  axios.get('/auth/check').then(res=> {
+  console.log(res.data)}
+)
+}
+
+render() {
   return (
     <div className="App">
     <Header />  
@@ -14,6 +26,7 @@ function App() {
 
     </div>
   );
+}
 }
 
 export default App;
