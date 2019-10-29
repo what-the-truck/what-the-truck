@@ -25,7 +25,7 @@ console.log('db is working'))
 
 app.use(express.json())
 
-// app.get('/auth/trucks', truckCtrl.getAllTrucks)
+app.get('/api/trucks', truckCtrl.getAllTrucks)
 // app.get('/api/events', eventCtrl.getAllEvents)
 // app.get('/api/attend', eventCtrl.getAllAttend)
 app.get('/auth/check', authCtrl.checkUser)
