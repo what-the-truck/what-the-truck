@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 export default function RegisterOptions() {
     return (
         <div>
+        <h1>RegisterOptions</h1>
             <Link className='link' to="/custregister">
                 <button>User</button>
             </Link>
