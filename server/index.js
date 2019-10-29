@@ -31,14 +31,15 @@ app.use(express.json())
 app.get('/auth/check', authCtrl.checkUser)
 
 app.post('/auth/truck', authCtrl.registerTruck)
+app.post('/auth/user', authCtrl.registerUser)
 app.post('/auth/trucklogin', authCtrl.loginTruck)
-// app.post('/auth/userlogin' authCtrl.loginUser)
-// app.post('/api/user', userCtrl.addUser)
+app.post('/auth/userlogin', authCtrl.loginUser)
 // app.post('/api/event', eventCtrl.addEvent)
 
 // app.delete('/api/truck/:id', truckCtrl.deleteTruck)
 // app.delete('/api/event/:id', eventCtrl.deleteEvent)
 // app.delete('/api/attend/:id', deleteAttend)
+app.delete('/auth/logout', authCtrl.logout)
 
 // app.put('/api/event', eventCtrl.editEvent)
 // app.put('/api/user', userCtrl.editUser)
