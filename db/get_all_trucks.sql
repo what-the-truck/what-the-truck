@@ -1,0 +1,1 @@
+SELECT name, phone, img, food_type, description, email FROM trucks;

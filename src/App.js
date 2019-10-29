@@ -15,7 +15,6 @@ componentDidMount(){
   axios.get('/auth/check').then(res=> {
   console.log(res.data)}
 )
-}
 
 render() {
   return (
