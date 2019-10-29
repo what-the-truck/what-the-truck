@@ -10,12 +10,12 @@ import { setUser } from "./ducks/userReducer";
 import { withRouter } from "react-router-dom";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
   componentDidMount() {
     axios.get("/auth/check").then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data === "none") {
         this.props.setUser(null);
       }
@@ -32,6 +32,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     {
       if (this.props.truckId !== null) {
         return (
@@ -52,9 +53,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(reduxState) {
-  const { setTruck, setUser, foodTruck } = reduxState;
-  return { setTruck, setUser, foodTruck };
+function mapStateToProps(store) {
+  const { truckId, foodTruck } = store.truckReducer;
+  const {userId} = store.userReducer
+  return { truckId, userId, foodTruck };
 }
 
 export default connect(
