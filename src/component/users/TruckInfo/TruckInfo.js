@@ -4,7 +4,7 @@ export default class TruckInfo extends Component {
     render() {
         return (
             <div>
-                
+              truck info  
             </div>
         )
     }

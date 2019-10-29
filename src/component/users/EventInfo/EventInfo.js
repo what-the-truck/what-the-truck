@@ -9,7 +9,7 @@ class EventInfo extends Component {
     render() {
         return (
             <div>
-                
+                event info
             </div>
         )
     }
