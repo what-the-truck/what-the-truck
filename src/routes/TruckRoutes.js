@@ -8,7 +8,7 @@ import MyMenu from '../component/trucks/MyMenu/MyMenu'
 
 export default ( 
     <Switch>
-        <Route exact path='/' component={TruckDash} />
+        <Route exact path='/truckdash' component={TruckDash} />
         <Route path ='/addevent' component={AddEvent} />
         <Route path ='/joinevent' component={JoinEvent} />
         <Route path ='/mymenu' component={MyMenu} />
