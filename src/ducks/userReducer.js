@@ -39,7 +39,7 @@ export default function userReducer(state = initialState,action) {
         //     return initialState;
             case SET_USER:
         
-                return {...state,...payload}
+                return {...state, user:action.payload}
                 default:
                     return state
     }

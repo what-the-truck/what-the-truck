@@ -20,25 +20,27 @@ export class Login extends Component {
   // This is user login
   userlogin = async () => {
     const { email, password } = this.state;
+    console.log('hit1')
     const res = await axios.post("/auth/userlogin", { email, password });
     if (res.data.user) {
       this.props.setUser(res.data.user);
     }
-    //   console.log(res.data.user)
-    swal.fire({ type: "success", text: res.data.message });
-    this.props.history("/");
+    // //   console.log(res.data.user)
+    // swal.fire({ type: "success", text: res.data.message });
+    this.props.history.push("/");
   };
 
-  // This is truck login
+//   // This is truck login
   trucklogin = async () => {
     const { email, password } = this.state;
-    axios.post("/auth/trucklogin", { email, password });
+    console.log('hit2')
+   const res = await axios.post("/auth/trucklogin", { email, password });
     if (res.data.user) {
       this.props.setUser(res.data.user);
     }
     // console.log(res.data.user)
-    swal.fire({ type: "success", text: res.data.message });
-    this.props.history("/");
+    // swal.fire({ type: "success", text: res.data.message });
+    this.props.history.push("/truckdash");
   };
 
   render() {
