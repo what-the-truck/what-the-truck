@@ -4,7 +4,7 @@ export default class EventList extends Component {
     render() {
         return (
             <div>
-                
+              event list 
             </div>
         )
     }

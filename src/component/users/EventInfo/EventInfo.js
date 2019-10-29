@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import {connect } from 'react-redux'
 
 
-export default class EventInfo extends Component {
+ class EventInfo extends Component {
     state = {
         events: []
     }
     render() {
         return (
             <div>
-                
+                event info
             </div>
         )
     }
