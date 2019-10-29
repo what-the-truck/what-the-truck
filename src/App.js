@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
+import CustRoutes from  './routes/CustRoutes'
+import TruckRoutes from './routes/TruckRoutes'
 import Header from './component/Header'
-import CustRoutes from './routes/CustRoutes'
-import TruckRoutes from'./routes/TruckRoutes'
+
 
 function App() {
   return (
     <div className="App">
-      <Header />  
-      {CustRoutes}
-      {TruckRoutes}
+    <Header />  
+    {CustRoutes}
+    {TruckRoutes}
+
     </div>
   );
 }
