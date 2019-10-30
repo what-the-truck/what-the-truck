@@ -13,7 +13,6 @@ export default (
         <Route path ='/addevent' component={AddEvent} />
         <Route path ='/joinevent' component={JoinEvent} />
         <Route path ='/mymenu' component={MyMenu} />
-        {/* <Route path = '/registeroptions' component={RegisterOptions} /> */}
         <Route path = '/login' component={Login} />
     </Switch>
 )
