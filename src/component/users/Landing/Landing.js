@@ -1,16 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import '../Landing/landing.scss'
 
 
 
 export default function Landing() {
     return (
-        <div>
+        <div className='button-options'>
             <Link className='link' to="/trucklist">
-                <button>Food Trucks</button>
+                <button className='button'>Food Trucks</button>
             </Link>
             <Link className='link' to="/eventlist">
-                <button>Events</button>
+                <button className='button'>Events</button>
             </Link>
         </div>
     )
