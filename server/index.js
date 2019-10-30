@@ -26,7 +26,7 @@ console.log('db is working'))
 app.use(express.json())
 
 app.get('/api/trucks', truckCtrl.getAllTrucks)
-// app.get('/api/events', eventCtrl.getAllEvents)
+app.get('/api/events', eventCtrl.getAllEvents)
 // app.get('/api/attend', eventCtrl.getAllAttend)
 app.get('/auth/check', authCtrl.checkUser)
 
@@ -36,8 +36,9 @@ app.post('/auth/trucklogin', authCtrl.loginTruck)
 app.post('/auth/userlogin', authCtrl.loginUser)
 // app.post('/api/event', eventCtrl.addEvent)
 
-// app.delete('/api/truck/:id', truckCtrl.deleteTruck)
-// app.delete('/api/event/:id', eventCtrl.deleteEvent)
+
+app.delete('/api/truck/:id', truckCtrl.deleteTruck)
+app.delete('/api/event/:id', eventCtrl.deleteEvent)
 // app.delete('/api/attend/:id', deleteAttend)
 app.delete('/auth/logout', authCtrl.logout)
 

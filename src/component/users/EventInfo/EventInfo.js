@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 import {connect } from 'react-redux'
+import axios from 'axios'
+import {withRouter} from 'react-router-dom'
+import {getEvents} from '../../../ducks/truckReducer'
+
 
 
 class EventInfo extends Component {
-    state = {
-        events: []
+    constructor(props){
+        super(props)
+    }
+   
+    componentDidMount(){
+        axios.get('/api/events').then(res => {
+            this.props.getEvents(res.data)
+        })
     }
     render() {
+        console.log(this.props)
         return (
             <div>
                 event info
@@ -14,9 +25,9 @@ class EventInfo extends Component {
         )
     }
 }
-function mapStateToProps(reduxState){
-    const {events} = reduxState 
-    return {events}
+function mapStateToProps(store){
+    const {eventId,events} = store.truckReducer 
+    return {eventId,events}
 }
 
-export default connect(mapStateToProps)(EventInfo)
+export default connect(mapStateToProps,{getEvents})(withRouter(EventInfo))
