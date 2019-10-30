@@ -5,6 +5,7 @@ import { setUser } from "../ducks/userReducer";
 import {setTruck} from '../ducks/truckReducer'
 import { withRouter, Link } from "react-router-dom";
 import swal from "sweetalert2";
+import './Login.scss'
 
 export class Login extends Component {
   state = {
@@ -19,7 +20,7 @@ export class Login extends Component {
   };
 
   // This is user login
-  userlogin = async () => {
+  userLogin = async () => {
     const { email, password } = this.state;
     const res = await axios.post("/auth/userlogin", { email, password });
     if (res.data.user) {
@@ -32,7 +33,7 @@ export class Login extends Component {
   };
 
 //   // This is truck login
-  trucklogin = async () => {
+  truckLogin = async () => {
     const { email, password } = this.state;
     console.log('hit2')
    const res = await axios.post("/auth/trucklogin", { email, password });
@@ -49,19 +50,21 @@ export class Login extends Component {
 
   render() {
     return (
-      <div>
-        <input
-          type="text"
-          placeholder="Email"
-          onChange={e => this.handleChange(e, "email")}
-        />
-        <input
-        type="password"
-        placeholder="Password"
-        onChange={e => this.handleChange(e, "password")}
-      />
-      <button onClick={this.userlogin}>User Login</button>
-      <button onClick={this.trucklogin}>truck Login</button>
+      <div className="login">
+        <div className="login-container">
+          <input
+            type="text"
+            placeholder="Email"
+            onChange={e => this.handleChange(e, "email")}
+          />
+          <input
+          type="password"
+          placeholder="Password"
+          onChange={e => this.handleChange(e, "password")}
+          />
+        <button className="button3" onClick={this.userLogin}>User Login</button>
+        <button className="button3" onClick={this.truckLogin}>Truck Login</button>
+        </div>
       </div>
     );
   }

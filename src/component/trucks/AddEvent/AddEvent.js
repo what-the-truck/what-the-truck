@@ -14,6 +14,7 @@ export default class AddEvent extends Component {
             latitude: '',
             longitude: '',
             date: '',
+            time: '',
         }
     }
 
@@ -40,8 +41,12 @@ export default class AddEvent extends Component {
                     value={this.state.date}
                     onChange={e => this.handleChange(e, "date")}
                     placeholder="Date"/>
-                </div>
+                <input type="time"
+                    value={this.state.time}
+                    onChange={e => this.handleChange(e, "time")}
+                    placeholder="Time"/>
                 <button className="button2">Submit</button>
+                </div>
             </div>
         )
     }
