@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert2'
 // import {Link} from 'react-router-dom'
-import {setUser} from '../ducks/userReducer'
+import {setTruck} from '../ducks/truckReducer'
 import {connect} from 'react-redux'
 import './TruckRegister.scss'
 
@@ -103,8 +103,8 @@ class TruckRegister extends Component {
 }
 
 function mapStateToProps(reduxState) {
-    const {user} = reduxState
-    return {user} 
+    const {truck} = reduxState
+    return {truck} 
 }
 
-export default connect (mapStateToProps, {setUser})(TruckRegister)
+export default connect (mapStateToProps, {setTruck})(TruckRegister)
