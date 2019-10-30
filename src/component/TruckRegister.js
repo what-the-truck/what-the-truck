@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert2'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import {setUser} from '../ducks/userReducer'
 import {connect} from 'react-redux'
+import './TruckRegister.scss'
 
 class TruckRegister extends Component {
 
@@ -53,7 +54,8 @@ class TruckRegister extends Component {
 
     render() {
         return (
-            <div>
+            <div className='truck-register'>
+                <div className="container-box">
                 <h1>Truck Registration</h1>
                 <input 
                     type="text" 
@@ -90,8 +92,9 @@ class TruckRegister extends Component {
                     value={this.state.description} 
                     cols="50" rows="6"/>
                 {/* <Link className='link' to='/truckdash'> */}
-                    <button className='button' onClick={() => this.register()}>Submit</button>
+                    <button className='button2' onClick={() => this.register()}>Submit</button>
                 {/* </Link> */}
+                </div>
             </div>
         )
     }

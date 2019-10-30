@@ -52,6 +52,12 @@ table {
     text-align: center;
     margin: 0;
     font-family: 'Nanum Gothic', sans-serif;
+    input {
+      width: 70vw;
+    }
+    textarea {
+      width: 70vw;
+    }
   }
   
   .App-logo {
@@ -86,4 +92,14 @@ table {
     border-color: #c4b5a2;
     border: solid 3px;
     
+}
+.button2 {
+  height: 5vh;
+  width: 15vw;
+  background: #470a0a;
+  color: #c4b5a2;
+  border-radius: 10%;
+  border: solid 2px;
+  border-color: #c4b5a2;
+  font-size: .8rem;
 }
