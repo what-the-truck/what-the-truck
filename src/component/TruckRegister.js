@@ -6,7 +6,7 @@ import {setUser} from '../ducks/userReducer'
 import {connect} from 'react-redux'
 import './TruckRegister.scss'
 
-class TruckRegister extends Component {
+export class TruckRegister extends Component {
 
     constructor() {
         super()
@@ -61,27 +61,37 @@ class TruckRegister extends Component {
                     type="text" 
                     onChange={e => this.handleChange(e, "email")} 
                     placeholder="Email" 
-                    value={this.state.email}/>
+                    value={this.state.email}
+                    name="email"
+                    id="email"/>
                 <input 
                     type="password" 
                     onChange={e => this.handleChange(e, "password")} 
                     placeholder="Password" 
-                    value={this.state.password}/>
+                    value={this.state.password}
+                    name="password"
+                    id="password"/>
                 <input 
                     type="text" 
                     onChange={e => this.handleChange(e, "name")} 
                     placeholder="Name" 
-                    value={this.state.name}/>
+                    value={this.state.name}
+                    name="name"
+                    id="name"/>
                 <input 
                     type="number" 
                     onChange={e => this.handleChange(e, "phone")} 
                     placeholder="Phone" 
-                    value={this.state.phone}/>
+                    value={this.state.phone}
+                    name="phone"
+                    id="phone"/>
                 <input 
                     type="text" 
                     onChange={e => this.handleChange(e, "img")} 
                     placeholder="Img URL" 
-                    value={this.state.img}/>
+                    value={this.state.img}
+                    name="img"
+                    id="img"/>
                 <input 
                     type="text" 
                     onChange={e => this.handleChange(e, "food_type")} 

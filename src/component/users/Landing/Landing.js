@@ -4,7 +4,7 @@ import '../Landing/landing.scss'
 
 
 
-export default function Landing() {
+export function Landing() {
     return (
         <div className='button-options'>
             <Link className='link' to="/trucklist">
@@ -16,3 +16,4 @@ export default function Landing() {
         </div>
     )
 }
+export default Landing
