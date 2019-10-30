@@ -1,0 +1,25 @@
+.header {
+    background: #c4b5a2;
+    height: 15vh;
+    color: #470a0a;
+    font-size: 2.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 4px; 
+    h1 {
+        width: 50vw;
+    }
+    img {
+        width: 23vw;
+        // margin: 2vw;
+    }
+    i {
+        display: flex;
+        width: 25vw;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+    }
+}

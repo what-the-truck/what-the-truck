@@ -8,10 +8,10 @@ export default function Landing() {
     return (
         <div className='button-options'>
             <Link className='link' to="/trucklist">
-                <button className='button'>Food Trucks</button>
+                <button className='button1'>Food Trucks</button>
             </Link>
             <Link className='link' to="/eventlist">
-                <button className='button'>Events</button>
+                <button className='button1'>Events</button>
             </Link>
         </div>
     )
