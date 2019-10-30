@@ -9,8 +9,8 @@ import EventInfo from '../component/users/EventInfo/EventInfo'
 import CustRegister from '../component/CustRegister'
 import TruckRegister from '../component/TruckRegister'
 import RegisterOptions from '../component/RegisterOptions'
-
-
+import Header from '../component/Header'
+import Login from '../component/Login'
 
 export default ( 
     <Switch>
@@ -23,5 +23,6 @@ export default (
         <Route path = '/registeroptions' component={RegisterOptions} />
         <Route path ='/custregister' component={CustRegister} />
         <Route path ='/truckregister' component={TruckRegister} />
+        <Route path = '/login' component={Login} />
     </Switch>
 )
