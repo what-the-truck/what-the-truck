@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import CustRoutes from "./routes/CustRoutes";
 import TruckRoutes from "./routes/TruckRoutes";
 import Header from "./component/Header";

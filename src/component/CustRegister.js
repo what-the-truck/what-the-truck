@@ -40,7 +40,7 @@ class CustRegister extends Component {
 
     render() {
         return (
-            <div>
+            <div className='cust-register'>
                 <h1>User Registration</h1>
                 <input 
                     type="text" 
@@ -53,7 +53,7 @@ class CustRegister extends Component {
                     onChange={e => this.handleChange(e, "password")} 
                     placeholder="Password"/>
                 {/* <Link className='link' to="/"> */}
-                    <button className='button' onClick={() => this.register()}>Submit</button>
+                    <button className='button2' onClick={() => this.register()}>Submit</button>
                 {/* </Link> */}
                 
             </div>
