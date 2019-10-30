@@ -5,7 +5,7 @@ import { HashRouter } from "react-router-dom";
 import { shallow } from "enzyme";
 
 
-//eric test
+//eric test #5
 it("renders without crashing", () => {
   shallow(
     <HashRouter>
