@@ -1,0 +1,12 @@
+.button-options {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.button {
+    height: 2rem;
+    width: 100px;
+}
