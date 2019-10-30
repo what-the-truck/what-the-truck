@@ -17,6 +17,7 @@ class EventInfo extends Component {
         })
     }
     render() {
+        console.log(this.props)
         return (
             <div>
                 event info
@@ -25,8 +26,8 @@ class EventInfo extends Component {
     }
 }
 function mapStateToProps(store){
-    const {events} = store.truckReducer 
-    return {events}
+    const {eventId,events} = store.truckReducer 
+    return {eventId,events}
 }
 
 export default connect(mapStateToProps,{getEvents})(withRouter(EventInfo))

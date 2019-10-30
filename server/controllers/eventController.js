@@ -9,4 +9,11 @@ module.exports = {
     let remove = await db.delete_event(id);
     res.status(200).send(remove);
   }
+  //   addEvent: async (req,res) => {
+
+  //       const {} = req.body
+  //       const db = req.app.get('db')
+  //       let event = await db.add_event([])
+  //       res.status(200).send(event)
+  //   }
 };
