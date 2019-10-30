@@ -19,6 +19,7 @@ class App extends Component {
       // console.log(res.data);
       if (res.data === "none") {
         this.props.setUser(null);
+        this.props.setTruck({truckId: null, name: null, email: null})
       }
       if (res.data.userId) {
         this.props.setUser(res.data);
@@ -30,6 +31,11 @@ class App extends Component {
     axios.get("/api/trucks").then(res => {
       this.props.getFoodTruck(res.data);
     });
+  }
+  async componentDidUpdate(prevProps){
+    if(prevProps.name !== this.props.name || prevProps.userId !== this.props.userId){
+      alert('it changed!')
+    }
   }
   async logout(){
     console.log(this.state)
@@ -63,6 +69,8 @@ class App extends Component {
         return (
           <div className="App">
             <Header
+            truckId = {this.props.truckId}
+            name = {this.props.name}
             logout = {this.logout} />
             {TruckRoutes}
           </div>
@@ -81,9 +89,9 @@ class App extends Component {
 }
 
 function mapStateToProps(store) {
-  const { truckId, foodTruck } = store.truckReducer;
+  const { truckId, foodTruck, name } = store.truckReducer;
   const {userId} = store.userReducer
-  return { truckId, userId, foodTruck };
+  return { truckId, userId, foodTruck, name };
 }
 
 export default connect(
