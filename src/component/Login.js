@@ -39,7 +39,7 @@ export class Login extends Component {
    const res = await axios.post("/auth/trucklogin", { email, password });
     if (res.data.truck) {
       this.props.setTruck(res.data.truck);
-      this.props.history.push("/truckdash");
+      this.props.history.push("/");
     } else {
         swal.fire({type:'success',text:res.data.message})
     }
