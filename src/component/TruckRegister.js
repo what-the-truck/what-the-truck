@@ -42,8 +42,8 @@ class TruckRegister extends Component {
             const res = await axios.post('/auth/truck', {email, password, name, phone, img, food_type, description})
             if(res.data.truck) {
                 this.props.setTruck(res.data.truck, res.data.loggedIn)
-                swal.fire({text: res.data.message, type: 'success', timer: 1800})
-                this.props.history.push('/truckdash')
+                swal.fire({text: 'Please login now', type: 'success', timer: 1800})
+                this.props.history.push('/login')
             } else {
             // this.props.setUser(res.data.truck, res.data.loggedIn)
             swal.fire({type: 'error', text: res.data.message, timer: 1500})
