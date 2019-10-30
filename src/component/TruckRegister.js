@@ -79,12 +79,12 @@ export class TruckRegister extends Component {
                     name="name"
                     id="name"/>
                 <input 
-                    type="number" 
+                    type="tel" 
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                     onChange={e => this.handleChange(e, "phone")} 
-                    placeholder="Phone" 
+                    placeholder="Phone #" 
                     value={this.state.phone}
-                    name="phone"
-                    id="phone"/>
+                    />
                 <input 
                     type="text" 
                     onChange={e => this.handleChange(e, "img")} 

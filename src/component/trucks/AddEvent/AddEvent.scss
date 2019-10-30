@@ -1,0 +1,21 @@
+.add-event {
+    height: 85vh;
+    width: 100vw;
+    background: #878483;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.add-event-container {
+    border-radius:15px;
+    height: 70vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #c4b5a2;
+    box-shadow: 0px 0px 20px 0px #1b0303;
+}
