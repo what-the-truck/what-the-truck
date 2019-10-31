@@ -6,6 +6,7 @@ const initialState = {
   name: "",
   email: "",
   foodTruck: [],
+  
   eventId: null,
   events: [],
   attend: [],
