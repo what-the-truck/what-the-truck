@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require ('massive')
-const {SERVER_PORT, CONNECTION_STRING, SECRET} = process.env
+const {SERVER_PORT, CONNECTION_STRING, SECRET, KEY} = process.env
 const app = express()
 const session = require ('express-session')
 const eventCtrl = require('./controllers/eventController')
@@ -29,12 +29,14 @@ app.get('/api/trucks', truckCtrl.getAllTrucks)
 app.get('/api/events', eventCtrl.getAllEvents)
 app.get('/api/attends', eventCtrl.getAllAttend)
 app.get('/auth/check', authCtrl.checkUser)
+app.get('/api/key', authCtrl.getKey)
 
 app.post('/auth/truck', authCtrl.registerTruck)
 app.post('/auth/user', authCtrl.registerUser)
 app.post('/auth/trucklogin', authCtrl.loginTruck)
 app.post('/auth/userlogin', authCtrl.loginUser)
 app.post('/api/event', eventCtrl.addEvent)
+app.post('/api/attend', eventCtrl.addAttend)
 
 
 app.delete('/api/truck/:id', truckCtrl.deleteTruck)
