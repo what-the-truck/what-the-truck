@@ -29,9 +29,9 @@ export class EventList extends Component {
   };
 
   getAttend = () => {
-    console.log("cows");
+    // console.log("cows");
     axios.get("/api/attends").then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.props.getAttend(res.data);
     });
   };
@@ -42,7 +42,7 @@ export class EventList extends Component {
     });
   };
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     let { events } = this.state;
     let { attend } = this.props;

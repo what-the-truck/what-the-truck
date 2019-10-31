@@ -28,7 +28,7 @@ export class TruckRegister extends Component {
     }
 
     async register() {
-        console.log(this.state)
+        // console.log(this.state)
         if(this.state.email === '' || 
             this.state.password === '' ||
             this.state.name === '' || 

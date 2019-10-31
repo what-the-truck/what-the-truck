@@ -26,7 +26,7 @@ class AddEvent extends Component {
 
     componentDidMount() {
         axios.get('/api/key').then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({key: res.data[0].geo})
         })
     }
@@ -38,7 +38,7 @@ class AddEvent extends Component {
     }
 
     async addressChange() {
-        console.log(this.state.key)
+        // console.log(this.state.key)
         let combine = this.state.street + ' ' + this.state.city + ' ' + this.state.state
         const final = combine.split(' ').join('+')
         await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${final}&key=${this.state.key}`)
@@ -57,9 +57,10 @@ class AddEvent extends Component {
         await this.addressChange()
         let {name, address, latitude, longitude, date, time} = this.state
         await axios.post(`/api/event`, {name, address, date, latitude, longitude, time}).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             const event_id = res.data[0].event_id
             axios.post(`/api/attend`, {truckId: this.props.truckId, event_id})
+            swal.fire({type: 'success', text: res.data.message, timer: 1700})
         })
         
         

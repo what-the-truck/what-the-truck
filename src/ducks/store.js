@@ -1,5 +1,5 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import promiseMiddleware from 'redux-promise-middleware'
+import { createStore, combineReducers} from "redux";
+// import promiseMiddleware from 'redux-promise-middleware'
 import truckReducer from "./truckReducer";
 import userReducer from "./userReducer";
 

@@ -64,7 +64,7 @@ class App extends Component {
 
   render() {
     // console.log(this.props)
-    {
+    
       if (this.props.truckId !== null) {
         return (
           <div className="App">
@@ -86,7 +86,7 @@ class App extends Component {
       }
     }
   }
-}
+
 
 function mapStateToProps(store) {
   const { truckId, foodTruck, name } = store.truckReducer;

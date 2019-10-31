@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios';
-import swal from 'sweetalert2';
-import { Link } from 'react-router-dom'
-import { setUser } from '../ducks/userReducer'
+// import axios from 'axios';
+// import swal from 'sweetalert2';
+// import { Link } from 'react-router-dom'
+// import { setUser } from '../ducks/userReducer'
 import { connect } from 'react-redux'
 import "./Header.scss";
 import { withRouter } from 'react-router-dom'
@@ -16,12 +16,12 @@ class Header extends Component {
   }
 
   redirect = (path) => {
-    console.log(this.state)
+    // console.log(this.state)
     this.props.history.push(path)
     this.setState(prevState => ({
       toggle: !prevState.toggle
     }))
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   logout1 = () => {
@@ -37,10 +37,11 @@ class Header extends Component {
       return (
         <div>
           <div className="header-top">
-            <img
-              src="https://lh3.googleusercontent.com/Npl4sWIz_4GJK-e_3opNpKHNfLYl9Wja7AWHAt_2Ri0nwgZ_Equk-4shiyTg0_GTVoLZOvwGtLyqKFIZ9fEZl7Opol2AZilGtiLLKgcQO_QqCsD78HaJ1_H2MpdlG7rtYUQiVIOmHLBqK-CcgpCizQ1EAFiyREDpKRmUsKcmklc7gB-t-NkuJvWa6toJPcLQthTl64LUzRk_KVtj7xXES3_rI1rwX__Ppc0QfsHwetzqVtYeoyNLso3vuJ7f2C1ouiL-zt9vfbGAXb05ULrM6qwQww0RlDT-jXBQtKQfmVHB0fQNJK0clommNo20Uzcgt2xR0sxPjozdkaacxF-VTUffdnlE3wZogBNWkAsBF49N0O2dIECrSN0ufH7QTEaKoz-eN6F_pCqS6y4qS8wiiVUIdRxFfzsbXAV8xI9vO12QRPysTzfzv6qmaXSmHA9NPWPjm6_kc-gfKD8XQ-EPeQ9EffBO6_IF-YiV-DFzFcyJ4GCsK80YzP93rcxlaOj5pUOtM4640eidoHb9nUhgs7N4OxWjLpnphX_4FhJdn23XXu8UDg_IpLZGylkm0L2iQ8Q2Hi1of6Dh6R2NHkDMLZhKheGcCZw3HTDa43Rmm3za__3DoWVibkmEdMQv_N4JxirdNj46UWKZPfDhsmb120OGXZTvZmiYsf0THPr_hzr32OJmliKgfeRpVd-NaRsZuz7xBNuyacMzbvV6mqVK-mQ_D8Je2fIs0bOK6lI3JgePsQE4=w688-h690-no"
-              alt=""
-            />
+              <img
+                src="https://lh3.googleusercontent.com/Npl4sWIz_4GJK-e_3opNpKHNfLYl9Wja7AWHAt_2Ri0nwgZ_Equk-4shiyTg0_GTVoLZOvwGtLyqKFIZ9fEZl7Opol2AZilGtiLLKgcQO_QqCsD78HaJ1_H2MpdlG7rtYUQiVIOmHLBqK-CcgpCizQ1EAFiyREDpKRmUsKcmklc7gB-t-NkuJvWa6toJPcLQthTl64LUzRk_KVtj7xXES3_rI1rwX__Ppc0QfsHwetzqVtYeoyNLso3vuJ7f2C1ouiL-zt9vfbGAXb05ULrM6qwQww0RlDT-jXBQtKQfmVHB0fQNJK0clommNo20Uzcgt2xR0sxPjozdkaacxF-VTUffdnlE3wZogBNWkAsBF49N0O2dIECrSN0ufH7QTEaKoz-eN6F_pCqS6y4qS8wiiVUIdRxFfzsbXAV8xI9vO12QRPysTzfzv6qmaXSmHA9NPWPjm6_kc-gfKD8XQ-EPeQ9EffBO6_IF-YiV-DFzFcyJ4GCsK80YzP93rcxlaOj5pUOtM4640eidoHb9nUhgs7N4OxWjLpnphX_4FhJdn23XXu8UDg_IpLZGylkm0L2iQ8Q2Hi1of6Dh6R2NHkDMLZhKheGcCZw3HTDa43Rmm3za__3DoWVibkmEdMQv_N4JxirdNj46UWKZPfDhsmb120OGXZTvZmiYsf0THPr_hzr32OJmliKgfeRpVd-NaRsZuz7xBNuyacMzbvV6mqVK-mQ_D8Je2fIs0bOK6lI3JgePsQE4=w688-h690-no"
+                alt=""
+                onClick={() => this.props.history.push('/')}
+              />
             <h1>Welcome, 
               <p>{this.props.name}!</p>
             </h1>
@@ -74,6 +75,10 @@ class Header extends Component {
         <div>
           <div className="header-top">
             <img
+              onClick={() => {this.props.history.push('/')
+              this.setState(prevState => ({
+                toggle: !prevState.toggle
+              }))}}
               src="https://lh3.googleusercontent.com/Npl4sWIz_4GJK-e_3opNpKHNfLYl9Wja7AWHAt_2Ri0nwgZ_Equk-4shiyTg0_GTVoLZOvwGtLyqKFIZ9fEZl7Opol2AZilGtiLLKgcQO_QqCsD78HaJ1_H2MpdlG7rtYUQiVIOmHLBqK-CcgpCizQ1EAFiyREDpKRmUsKcmklc7gB-t-NkuJvWa6toJPcLQthTl64LUzRk_KVtj7xXES3_rI1rwX__Ppc0QfsHwetzqVtYeoyNLso3vuJ7f2C1ouiL-zt9vfbGAXb05ULrM6qwQww0RlDT-jXBQtKQfmVHB0fQNJK0clommNo20Uzcgt2xR0sxPjozdkaacxF-VTUffdnlE3wZogBNWkAsBF49N0O2dIECrSN0ufH7QTEaKoz-eN6F_pCqS6y4qS8wiiVUIdRxFfzsbXAV8xI9vO12QRPysTzfzv6qmaXSmHA9NPWPjm6_kc-gfKD8XQ-EPeQ9EffBO6_IF-YiV-DFzFcyJ4GCsK80YzP93rcxlaOj5pUOtM4640eidoHb9nUhgs7N4OxWjLpnphX_4FhJdn23XXu8UDg_IpLZGylkm0L2iQ8Q2Hi1of6Dh6R2NHkDMLZhKheGcCZw3HTDa43Rmm3za__3DoWVibkmEdMQv_N4JxirdNj46UWKZPfDhsmb120OGXZTvZmiYsf0THPr_hzr32OJmliKgfeRpVd-NaRsZuz7xBNuyacMzbvV6mqVK-mQ_D8Je2fIs0bOK6lI3JgePsQE4=w688-h690-no"
               alt=""
             />
