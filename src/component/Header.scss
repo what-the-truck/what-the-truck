@@ -30,6 +30,11 @@
         font-size: 4rem;
     }
 }
+.header-top {
+  img {
+    cursor: pointer;
+  }
+}
 .menu-list-true {
     display: flex;
     flex-direction: column;

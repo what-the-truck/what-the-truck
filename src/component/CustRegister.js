@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import swal from 'sweetalert2';
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import {setUser} from '../ducks/userReducer'
 import {connect} from 'react-redux'
+import './CustRegister.scss'
 
 class CustRegister extends Component {
     constructor() {
@@ -40,7 +41,8 @@ class CustRegister extends Component {
     render() {
         return (
             <div className='cust-register'>
-                <h1>User Registration</h1>
+                <div className="cust-container-box">
+                {/* <h1>User Registration</h1> */}
                 <input 
                     type="text" 
                     value={this.state.email} 
@@ -51,9 +53,8 @@ class CustRegister extends Component {
                     value={this.state.password} 
                     onChange={e => this.handleChange(e, "password")} 
                     placeholder="Password"/>
-                {/* <Link className='link' to="/"> */}
-                    <button className='button2' onClick={() => this.register()}>Submit</button>
-                {/* </Link> */}
+                <button className='button2' onClick={() => this.register()}>Submit</button>
+                </div>
                 
             </div>
         )

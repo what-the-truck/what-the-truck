@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { setUser } from "../ducks/userReducer";
 import { setTruck } from "../ducks/truckReducer";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import swal from "sweetalert2";
 import "./Login.scss";
 
@@ -26,21 +26,23 @@ export class Login extends Component {
     if (res.data.user) {
       this.props.setUser(res.data.user);
       this.props.history.push("/");
+      swal.fire({ type: "success", text: res.data.message, timer: 1800 });
     } else {
-      swal.fire({ type: "success", text: res.data.message });
+      swal.fire({ type: 'error', text: res.data.message})
     }
   };
 
   //   // This is truck login
   truckLogin = async () => {
     const { email, password } = this.state;
-    console.log("hit2");
+    // console.log("hit2");
     const res = await axios.post("/auth/trucklogin", { email, password });
     if (res.data.truck) {
       this.props.setTruck(res.data.truck);
       this.props.history.push("/");
+      swal.fire({type: "success", text: res.data.message, timer: 1800})
     } else {
-      swal.fire({ type: "success", text: res.data.message });
+      swal.fire({ type: "error", text: res.data.message });
     }
 
     // console.log(res.data.user)
