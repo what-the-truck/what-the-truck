@@ -6,9 +6,9 @@ import * as serviceWorker from "./serviceWorker";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./ducks/store";
-import configureStore from './configureStore'
+// import configureStore from './configureStore'
 
-const store = configureStore()
+// const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>

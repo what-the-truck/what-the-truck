@@ -1,6 +1,10 @@
 const bcrypt = require('bcryptjs')
 
 module.exports = {
+    getKey(req,res) {
+        const db = req.app.get('db')
+        db.get_key().then(key => res.status(200).send(key))
+    },
     async registerTruck(req, res) {
         const db = req.app.get('db')
         const { name, phone, img, food_type, description, password, email } = req.body

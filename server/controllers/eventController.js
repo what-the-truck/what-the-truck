@@ -27,6 +27,13 @@ module.exports = {
       const attend = await db.get_all_attend()
       res.status(200).send(attend)
   },
+
+  addAttend: async (req,res) => {
+    const db = req.app.get('db')
+    const {event_id, truckId} = req.body
+    await db.add_attend([event_id, truckId])
+    res.status(200)
+  },
   deleteAttend: async (req,res) =>{
       const { id } = req.params
       const db = req.app.get("db")

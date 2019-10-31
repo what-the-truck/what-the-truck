@@ -22,9 +22,8 @@ class CustRegister extends Component {
     }
 
     async register() {
-        if(this.state.email === '' || 
-            this.state.password === '')
-            {return (swal.fire({type: 'error', text: "Please fill out all information", timer: 1500}))
+        if(this.state.email === '' || this.state.password === '')
+            {return (swal.fire({type: 'error', text: "Please fill out all information"}))
         } else {
         const {email, password} = this.state
         const res = await axios.post('/auth/user', {password, email})
