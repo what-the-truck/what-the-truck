@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 
-export default function RegisterOptions() {
+export function RegisterOptions() {
     return (
         <div>
         <h1>RegisterOptions</h1>
@@ -18,3 +18,4 @@ export default function RegisterOptions() {
         </div>
     )
 }
+export default RegisterOptions

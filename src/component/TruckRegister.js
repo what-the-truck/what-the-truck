@@ -6,7 +6,7 @@ import {setTruck} from '../ducks/truckReducer'
 import {connect} from 'react-redux'
 import './TruckRegister.scss'
 
-class TruckRegister extends Component {
+export class TruckRegister extends Component {
 
     constructor() {
         super()
@@ -61,38 +61,52 @@ class TruckRegister extends Component {
                     type="text" 
                     onChange={e => this.handleChange(e, "email")} 
                     placeholder="Email" 
-                    value={this.state.email}/>
+                    value={this.state.email}
+                    name="email"
+                    id="Email"/>
                 <input 
                     type="password" 
                     onChange={e => this.handleChange(e, "password")} 
                     placeholder="Password" 
-                    value={this.state.password}/>
+                    value={this.state.password}
+                    name="password"
+                    id="Password"/>
                 <input 
                     type="text" 
                     onChange={e => this.handleChange(e, "name")} 
                     placeholder="Name" 
-                    value={this.state.name}/>
+                    value={this.state.name}
+                    name="name"
+                    id="Name"/>
                 <input 
                     type="tel" 
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                     onChange={e => this.handleChange(e, "phone")} 
                     placeholder="Phone #" 
                     value={this.state.phone}
+                    name='phone'
+                    id="Phone"
                     />
                 <input 
                     type="text" 
                     onChange={e => this.handleChange(e, "img")} 
                     placeholder="Img URL" 
-                    value={this.state.img}/>
+                    value={this.state.img}
+                    name="img"
+                    id="Img"/>
                 <input 
                     type="text" 
                     onChange={e => this.handleChange(e, "food_type")} 
                     placeholder="Type" 
-                    value={this.state.food_type}/>
+                    value={this.state.food_type}
+                    name='type'
+                    id='Type'/>
                 <textarea type="text" placeholder="Description" 
                     onChange={e => this.handleChange(e, "description")} 
                     value={this.state.description} 
-                    cols="50" rows="6"/>
+                    cols="50" rows="6"
+                    name='description'
+                    id='Description'/>
                 {/* <Link className='link' to='/truckdash'> */}
                     <button className='button2' onClick={() => this.register()}>Submit</button>
                 {/* </Link> */}
