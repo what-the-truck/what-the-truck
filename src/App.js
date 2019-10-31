@@ -34,7 +34,7 @@ class App extends Component {
   }
   async componentDidUpdate(prevProps){
     if(prevProps.name !== this.props.name || prevProps.userId !== this.props.userId){
-      alert('it changed!')
+      // alert('it changed!')
     }
   }
   async logout(){
