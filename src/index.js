@@ -7,13 +7,8 @@ import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./ducks/store";
 // import configureStore from './configureStore'
-<<<<<<< HEAD
-
-// const store = configureStore()
-=======
 
 
->>>>>>> 906c36c3d29c7a51d892bae86c0cc5fb6e9cf15c
 
 ReactDOM.render(
   <Provider store={store}>
