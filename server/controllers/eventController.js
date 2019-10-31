@@ -23,6 +23,7 @@ module.exports = {
     res.status(200).send(event);
   },
   getAllAttend: async (req,res)=> {
+    console.log('hit attend')
       const db =req.app.get('db')
       const attend = await db.get_all_attend()
       res.status(200).send(attend)
