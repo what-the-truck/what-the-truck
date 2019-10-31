@@ -1,23 +1,24 @@
 //initial state
 const initialState = {
-  loggedIn:false,
-  truckId:null,
-  truck:null,
-  name:'',
-  email:'',
+  loggedIn: false,
+  truckId: null,
+  truck: null,
+  name: "",
+  email: "",
   foodTruck: [],
-  eventId:null,
+  eventId: null,
   events: [],
   attend: [],
+  attendId: null,
   follows: []
 };
 
 //Action constants
-const SET_TRUCK = 'SET_TRUCK'
-const GET_FOOD_TRUCK = 'GET_FOOD_TRUCK';
-const GET_FOLLOWS ='GET_FOLLOWS';
-const GET_EVENTS = 'GET_EVENTS';
-const GET_ATTEND = 'GET_ATTEND';
+const SET_TRUCK = "SET_TRUCK";
+const GET_FOOD_TRUCK = "GET_FOOD_TRUCK";
+const GET_FOLLOWS = "GET_FOLLOWS";
+const GET_EVENTS = "GET_EVENTS";
+const GET_ATTEND = "GET_ATTEND";
 
 // Action Builders
 export function getFoodTruck(foodTruck) {
@@ -47,11 +48,11 @@ export function getAttend(attend) {
   };
 }
 
-export function setTruck(truck){
+export function setTruck(truck) {
   return {
-    type:SET_TRUCK,
-    payload:truck
-  }
+    type: SET_TRUCK,
+    payload: truck
+  };
 }
 
 //truckReducer
@@ -59,19 +60,15 @@ export default function truckReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case SET_TRUCK:
-      return {...state,...payload}
+      return { ...state, ...payload };
     case GET_FOOD_TRUCK:
-      const { foodTruck } = payload;
-      return { ...state, foodTruck };
+      return { ...state, foodTruck: payload };
     case GET_EVENTS:
-      const { events } = payload;
-      return { ...state, events };
+      return { ...state, events: payload };
     case GET_ATTEND:
-      const { attend } = payload;
-      return { ...state, attend };
+      return { ...state, attend: payload };
     case GET_FOLLOWS:
-      const { follows } = payload;
-      return { ...state, follows };
+      return { ...state, follows: payload };
     default:
       return state;
   }
