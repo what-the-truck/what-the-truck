@@ -12,6 +12,7 @@ class CustRegister extends Component {
         this.state = {
             email: '',
             password: '',
+            phone: '',
 
         }
     }
@@ -26,8 +27,8 @@ class CustRegister extends Component {
         if(this.state.email === '' || this.state.password === '')
             {return (swal.fire({type: 'error', text: "Please fill out all information"}))
         } else {
-        const {email, password} = this.state
-        const res = await axios.post('/auth/user', {password, email})
+        const {email, password, phone} = this.state
+        const res = await axios.post('/auth/user', {password, email, phone})
         if(res.data.user) {
             this.props.setUser(res.data.user, res.data.loggedIn)
             swal.fire({text:res.data.message, type: 'success', timer: 2000})
@@ -47,7 +48,12 @@ class CustRegister extends Component {
                     type="text" 
                     value={this.state.email} 
                     onChange={e => this.handleChange(e, "email")} 
-                    placeholder="Email"/>
+                    placeholder="Email (required)"/>
+                <input 
+                    type="number" 
+                    value={this.state.phone} 
+                    onChange={e => this.handleChange(e, "phone")} 
+                    placeholder="Phone (not required)"/>
                 <input 
                     type="password" 
                     value={this.state.password} 
