@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import moment from 'moment'
 
 import { getAttend } from "../../../ducks/truckReducer";
 import "./EventList.scss"
@@ -31,7 +32,7 @@ export class EventList extends Component {
   getAttend = () => {
     // console.log("cows");
     axios.get("/api/attends").then(res => {
-      // console.log(res.data);
+      console.log(res.data);
       this.props.getAttend(res.data);
     });
   };
@@ -42,7 +43,7 @@ export class EventList extends Component {
     });
   };
   render() {
-    // console.log(this.props);
+    console.log(this.props);
 
     let { events } = this.state;
     let { attend } = this.props;
@@ -53,7 +54,7 @@ export class EventList extends Component {
 
             <h1>{ele.name}</h1>
             <h2>{ele.address}</h2>
-            <h2 type="date">{(ele.date)}</h2>
+            <h2>{moment(ele.date).format('ddd')}, {moment(ele.date).format('ll')}</h2>
             <h2>{ele.time}</h2>
             <h3>Trucks Attending:</h3>
             <h4></h4>
