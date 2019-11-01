@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter,Link } from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
 
 export class TruckList extends Component {
@@ -31,13 +31,15 @@ export class TruckList extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { foodTruck } = this.props;
     let allTrucks = foodTruck.map(ele => {
       return (
         <div className="Trucks" key={ele.truck_id} ele={ele}>
           <div>
-            <h1>Name: {ele.name}</h1>
+          <Link to={`/truckinfo/${ele.truck_id}`}>
+          <h1>Name: {ele.name}</h1>
+          </Link>
             <h1>Phone: {ele.phone}</h1>
             <h1>FoodType:{ele.food_type}</h1>
             <h1>Description: {ele.description}</h1>
