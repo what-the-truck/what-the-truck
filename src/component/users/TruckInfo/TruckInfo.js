@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
+import './TruckInfo.scss'
 
 export class TruckInfo extends Component {
   constructor(props) {
@@ -20,11 +21,11 @@ export class TruckInfo extends Component {
     const { id: truck_id } = this.props.match.params;
     console.log(this.props.match.params.id);
     axios.get(`/api/truck/${truck_id}`).then(res => {
-    //   this.props.getFoodTruck(res.data);
-        this.setState({
-            foodTruck:res.data
-        })
-        // console.log(res.data);
+      //   this.props.getFoodTruck(res.data);
+      this.setState({
+        foodTruck: res.data
+      })
+      // console.log(res.data);
     });
   };
 
@@ -39,20 +40,32 @@ export class TruckInfo extends Component {
     const { foodTruck } = this.state;
     let oneTruck = foodTruck.map(ele => {
       return (
-        <div className="trucks" key={ele.truck_id} ele={ele}>
+        <div className="truck-info-display" key={ele.truck_id} ele={ele}>
           <div>
-          
-            <h1>{ele.name}</h1>
-            <h1>{ele.phone}</h1>
-            <h1>{ele.food_type}</h1>
-            <h1>{ele.description}</h1>
-            <h1>{ele.email}</h1>
+            <div className="top-bar">
+              <button className="follow">Follow +</button>
+              <h1>{ele.name}</h1>
+            </div>
             <img src={ele.img} alt="" />
+            <div className="info-box">
+              <div className="info-left">
+                <h2>{ele.food_type}</h2>
+                <h3>{ele.description}</h3>
+              </div>
+              <div className="info-right">
+                <h2>Contact </h2>
+                <h3>{ele.phone}</h3>
+                <h3>{ele.email}</h3>
+              </div>
+            </div>
           </div>
+          <div className="top-bar">
+            <h1> EVENT LIST</h1>
+            </div>
         </div>
       );
     });
-    return <div>{oneTruck}</div>;
+    return <div className="truck-dash">{oneTruck}</div>;
   }
 }
 
