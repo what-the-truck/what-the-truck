@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter,Link } from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
 import "./TruckList.scss"
 export class TruckList extends Component {
@@ -31,7 +31,7 @@ export class TruckList extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { foodTruck } = this.props;
     let allTrucks = foodTruck.map(ele => {
       return (

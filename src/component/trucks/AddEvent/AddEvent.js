@@ -88,14 +88,14 @@ class AddEvent extends Component {
                     value={this.state.state}
                     onChange={e => this.handleChange(e, "state")}
                     placeholder="State"/>
-                <input type="date"
+                <input type="datetime-local"
                     value={this.state.date}
                     onChange={e => this.handleChange(e, "date")}
                     placeholder="Date"/>
-                <input type="time"
+                {/* <input type="time"
                     value={this.state.time}
                     onChange={e => this.handleChange(e, "time")}
-                    placeholder="Time"/>
+                    placeholder="Time"/> */}
                 <button className="button2" onClick={() => this.addEvent()}>Submit</button>
                 </div>
             </div>
