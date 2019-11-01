@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter,Link } from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
-
+import "./TruckList.scss"
 export class TruckList extends Component {
   constructor(props) {
     super(props);
@@ -36,20 +36,22 @@ export class TruckList extends Component {
     let allTrucks = foodTruck.map(ele => {
       return (
         <div className="Trucks" key={ele.truck_id} ele={ele}>
-          <div>
-          <Link to={`/truckinfo/${ele.truck_id}`}>
-          <h1>Name: {ele.name}</h1>
-          </Link>
-            <h1>Phone: {ele.phone}</h1>
-            <h1>FoodType:{ele.food_type}</h1>
-            <h1>Description: {ele.description}</h1>
-            <h1>Email:{ele.email}</h1>
+
+          <div className="left-list">
             <img src={ele.img} alt="" />
           </div>
+          <div className="right-list">
+            <h1>{ele.name}</h1>
+            <h2>{ele.food_type}</h2>
+            <p>{ele.description}</p>
+            {/* <h1>Phone: {ele.phone}</h1> */}
+            {/* <h1>Email:{ele.email}</h1> */}
+          </div>
+
         </div>
       );
     });
-    return <div>{allTrucks}</div>;
+    return <div className="Truck-List">{allTrucks}</div>;
   }
 }
 
