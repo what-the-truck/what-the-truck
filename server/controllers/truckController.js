@@ -15,5 +15,13 @@ module.exports = {
     const db = req.app.get("db");
     const truck = await db.get_a_truck(truck_id);
     res.status(200).send(truck);
-  }
+  },
+
+  // getTruckDash:async (req,res) => {
+  //   const { truck_id } = req.body;
+  //   console.log(req.params)
+  //   const db = req.app.get("db");
+  //   const truck = await db.get_a_truck(truck_id);
+  //   res.status(200).send(truck);
+  // }
 };

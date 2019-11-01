@@ -56,6 +56,7 @@ export class TruckInfo extends Component {
   }
 }
 
+
 function mapStateToProps(store) {
   const { foodTruck, truck_id } = store.truckReducer;
   return { foodTruck, truck_id };

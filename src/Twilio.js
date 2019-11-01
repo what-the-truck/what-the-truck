@@ -1,15 +1,16 @@
 // import React, { Component } from 'react'
 // import axios from 'axios'
 // require('dotenv/config')
+// const {_twilio_recipient} = process.env
 
 
 // export default class Twilio extends Component {
 //     state = {
 //         text:{
-//             recipient:'' ,//needs a number to alert
-//             textmessage:'' //figure out what our message will entail
-//         }
-//     }
+//             recipient: {_twilio_recipient} ,//needs a number to alert
+    //         textmessage:'Test #1' //figure out what our message will entail
+    //     }
+    // }
 
 //     sendText = () => {
 //         const {text} = this.state

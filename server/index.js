@@ -41,6 +41,7 @@ app.get('/api/attends', eventCtrl.getAllAttend)
 app.get('/auth/check', authCtrl.checkUser)
 app.get('/api/key', authCtrl.getKey)
 app.get('/api/truck/:truck_id',truckCtrl.getATruck)
+// app.get('/api/truck',truckCtrl.getTruckDash)
 
 app.post('/auth/truck', authCtrl.registerTruck)
 app.post('/auth/user', authCtrl.registerUser)
