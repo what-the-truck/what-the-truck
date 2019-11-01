@@ -23,7 +23,7 @@ module.exports = {
         })
         // Store the new user in sessions
         req.session.truck = {
-        tuckId: newTruck[0].truck_id,
+        truckId: newTruck[0].truck_id,
          email,
          name,
          phone,
