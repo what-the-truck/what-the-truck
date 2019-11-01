@@ -62,7 +62,7 @@ export class EventList extends Component {
               return el.event_id === ele.event_id;
             }).map(att => {
               return (
-                <div className="attending">
+                <div onClick={()=>this.props.history.push(`/truckinfo/${att.truck_id}`)} className="attending">
                   {att.name}
                 </div>
               )

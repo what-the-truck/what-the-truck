@@ -36,7 +36,7 @@ module.exports = {
     },
     async registerUser(req, res) {
         const db = req.app.get('db')
-        const {password, email } = req.body
+        const {password, email, phone } = req.body
 
         // Check to see if the user has already registered
         const user = await db.find_user_email(email)
@@ -47,7 +47,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
         // Store the new user in the DB
-        const newUser = await db.add_user({hash, email}).catch(err => {
+        const newUser = await db.add_user({hash, email, phone}).catch(err => {
             return res.sendStatus(503)
         })
         // Store the new user in sessions

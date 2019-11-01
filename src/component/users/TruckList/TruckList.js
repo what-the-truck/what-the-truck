@@ -41,7 +41,7 @@ export class TruckList extends Component {
             <img src={ele.img} alt="" />
           </div>
           <div className="right-list">
-            <h1>{ele.name}</h1>
+            <h1 onClick={()=>this.props.history.push(`/truckinfo/${ele.truck_id}`)}>{ele.name}</h1>
             <h2>{ele.food_type}</h2>
             <p>{ele.description}</p>
             {/* <h1>Phone: {ele.phone}</h1> */}

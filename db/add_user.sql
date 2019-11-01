@@ -1,3 +1,3 @@
-INSERT INTO users (hash, email)
-VALUES ( ${hash}, ${email} )
+INSERT INTO users (hash, email, phone)
+VALUES ( ${hash}, ${email}, ${phone} )
 RETURNING user_id;
