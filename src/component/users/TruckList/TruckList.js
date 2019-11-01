@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { withRouter,Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
 import "./TruckList.scss"
 export class TruckList extends Component {
