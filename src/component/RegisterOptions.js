@@ -8,6 +8,7 @@ import './RegisterOptions.scss'
 export function RegisterOptions() {
     return (
         <div className='register-options'>
+            <div className="options-container">
             {/* <h1>RegisterOptions</h1> */}
                 <Link className='link' to="/custregister">
                     <button className='button1'>User</button>
@@ -15,6 +16,7 @@ export function RegisterOptions() {
                 <Link className='link' to="/truckregister">
                     <button className='button1'>Truck</button>
                 </Link>
+            </div>
             
         </div>
     )
