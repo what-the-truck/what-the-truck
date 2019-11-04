@@ -20,11 +20,11 @@ export class TruckDash extends Component {
     // console.log(this.props.foodTruck);
     axios.get('/api/truckevents').then(res => {
       console.log(res.data)
-      const events = res.data.filter(el => {
-        return el.truck_id === this.props.truckId
+      const events = res.data.filter((el) => {
+        return el.truck_id === +this.props.truckId
       })
       this.setState({
-        myEvents: this.props.truckId[events]
+        myEvents: [events]
       })
     })
   }
@@ -52,7 +52,7 @@ export class TruckDash extends Component {
   render() {
     let {myEvents} = this.state
     let truckEvents = myEvents.map(el => {
-      
+
     })
     return (
       <div className="truck-dash-display">
