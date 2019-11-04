@@ -1,22 +1,21 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require ('massive')
-const {SERVER_PORT, CONNECTION_STRING, SECRET, KEY} = process.env
+const {REACT_APP_TWILIO_RECIPIENT,SERVER_PORT, CONNECTION_STRING, SECRET, KEY,_twilio_account_sid,_twilio_auth_token} = process.env
 const app = express()
 const session = require ('express-session')
 const eventCtrl = require('./controllers/eventController')
 const truckCtrl = require('./controllers/truckController')
 const userCtrl = require('./controllers/userController')
 const authCtrl = require('./controllers/authController')
-// const twilio = require('twilio')
+const twilio = require('twilio')
 
-// const accountSid = _twilio_account_sid
-//set accountSid in env
-// const authToken = _twilio_auth_token
-//set authToken in env
-// const client = new twilio(accountSid,authToken)
-// const cors = require('cors')
-
+const accountSid = _twilio_account_sid
+// set accountSid in env
+const authToken = _twilio_auth_token
+// set authToken in env
+const client = new twilio(accountSid,authToken)
+const cors = require('cors')
 
 // app.use(cors())
 app.use(
@@ -25,14 +24,17 @@ app.use(
         resave: false,
         saveUnitialized: true, 
     })
-)
-massive(CONNECTION_STRING)
-.then(dbInstance => {
-    app.set("db", dbInstance)
-},
-console.log('db is working'))
+    )
+    massive(CONNECTION_STRING)
+    .then(dbInstance => {
+        app.set("db", dbInstance)
+    },
+    console.log('db is working'),
+    
+    )
 .catch(err=>console.log(err))
 
+app.use(cors())
 app.use(express.json())
 
 app.get('/api/trucks', truckCtrl.getAllTrucks)
@@ -49,6 +51,7 @@ app.post('/auth/trucklogin', authCtrl.loginTruck)
 app.post('/auth/userlogin', authCtrl.loginUser)
 app.post('/api/event', eventCtrl.addEvent)
 app.post('/api/attend', eventCtrl.addAttend)
+// app.post('/api/sendSMS',eventCtrl.sendSMS)
 
 
 app.delete('/api/truck/:id', truckCtrl.deleteTruck)
@@ -60,14 +63,14 @@ app.delete('/auth/logout', authCtrl.logout)
 // app.put('/api/user', userCtrl.editUser)
 
 //sending twilio alert
-// app.get('/send-text',(req,res) => {
-//     console.log(req.query)
-//     const {recipient,textmessage} = req.query
-//     client.messages.create({
-//         body:textmessage,
-//         to:"1" + recipient,
-//         from:"+" //add twilio number
-//     })
-// .then((message) => console.log(message.body))})
+app.get('/send-text',(req,res) => {
+    console.log(req.query)
+    const {recipient,textmessage} = req.query
+    client.messages.create({
+        body:textmessage,
+        to:"1" + recipient,
+        from:"+18016530129" //add twilio number
+    })
+.then((message) => console.log(message.body))})
 
 app.listen(SERVER_PORT, ()=> console.log(`I made ${SERVER_PORT} Dr Peppers just for you!`))
