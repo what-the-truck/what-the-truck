@@ -18,6 +18,7 @@ export class TruckRegister extends Component {
             img: '',
             food_type: '',
             description: '',
+            wesite: '',
         }
     }
 
@@ -101,6 +102,13 @@ export class TruckRegister extends Component {
                     value={this.state.food_type}
                     name='type'
                     id='Type'/>
+                <input 
+                    type="text"
+                    onChange={e => this.handleChange(e, "website")}
+                    placeholder="Website URL(optional)"
+                    value={this.state.website}
+                    name="website"
+                    id="Website"/>
                 <textarea type="text" placeholder="Description" 
                     onChange={e => this.handleChange(e, "description")} 
                     value={this.state.description} 

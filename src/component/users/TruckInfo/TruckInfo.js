@@ -58,6 +58,12 @@ export class TruckInfo extends Component {
                 <h2>Contact </h2>
                 <h3>{ele.phone}</h3>
                 <h3>{ele.email}</h3>
+
+                <h3>
+                  <a href={`https://${ele.website}`} target='_blank'>
+                    {ele.website}
+                  </a>
+                </h3>
               </div>
             </div>
           </div>
