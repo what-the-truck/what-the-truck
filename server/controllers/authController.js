@@ -102,6 +102,7 @@ module.exports = {
             .send({ message: 'Logged in', user: req.session.user, loggedIn: true })
     },
     logout(req, res) {
+        console.log('logout hit')
         req.session.destroy()
         res.status(200).send({ message: 'Logged out', loggedIn: false })
     },

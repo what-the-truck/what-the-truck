@@ -19,6 +19,7 @@ export class JoinEvent extends Component {
   }
 
   getEvents = () => {
+    console.log('doing thing')
     axios.get("/api/events").then(res => {
       this.setState({
         events: res.data
