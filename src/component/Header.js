@@ -25,6 +25,7 @@ class Header extends Component {
   }
 
   logout1 = () => {
+    console.log('logout1 on header')
     this.props.logout()
     this.setState(prevState => ({
       toggle: !prevState.toggle
@@ -53,15 +54,15 @@ class Header extends Component {
             }))} className="fas fa-hamburger"></i>
           </div>
           <div className={`menu-list-${this.state.toggle ? true : false}`}>         
-            <div onClick={() => this.redirect('/truckdash')} className="menu-item">
+            <div onClick={() => this.redirect('/')} className="menu-item">
               <h2>My Truck</h2>
             </div>
             <div onClick={() => this.redirect('/addevent')} className="menu-item">
               <h2>Add Event</h2>
             </div>
-            <div onClick={() => this.redirect('/joinevent')} className="menu-item">
+            {/* <div onClick={() => this.redirect('/joinevent')} className="menu-item">
               <h2>Join Event</h2>
-            </div>
+            </div> */}
             <div onClick={() => this.redirect('/mymenu')} className="menu-item">
               <h2>My menu</h2>
             </div>
