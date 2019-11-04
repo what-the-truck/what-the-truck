@@ -10,12 +10,31 @@ export class TruckInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodTruck: []
+      foodTruck: [],
+      truckEvents: []
     };
+    this.getTruckEvents = this.getTruckEvents.bind(this)
   }
 
   componentDidMount() {
     this.getOneTruck();
+    this.getTruckEvents();
+  }
+async getTruckEvents(){
+      await axios.get('/api/truckevents').then(res => {
+        console.log(res.data)
+      const events = res.data.filter((el) => {
+        console.log(`${el.truck_id} is the same as ${this.props.match.params.id}?`)
+      return el.truck_id === +this.props.match.params.id
+      }
+      )
+      console.log(events)
+      this.setState({
+        truckEvents: events
+      })
+    }
+    )
+    await console.log(this.state.truckEvents)
   }
 
   getOneTruck = () => {
@@ -45,7 +64,7 @@ export class TruckInfo extends Component {
           <div>
             <div className="top-bar">
               <button className="follow">Follow +</button>
-              
+
               <h1>{ele.name}</h1>
             </div>
             <img src={ele.img} alt="" />
@@ -61,9 +80,16 @@ export class TruckInfo extends Component {
               </div>
             </div>
           </div>
-          <div className="top-bar">
+          <div className="">
             <h1> EVENT LIST</h1>
-            </div>
+           { this.state.truckEvents.map(el=> {
+             return(
+               <div className>
+                 {el.name}
+                 </div>
+             )
+           }) }
+          </div>
         </div>
       );
     });

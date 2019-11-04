@@ -40,6 +40,11 @@ module.exports = {
       const db = req.app.get("db")
       let remove = await db.delete_attend(id)
       res.status(200).send(remove)
+  },
+  getTruckEvents: async (req, res) => {
+    const db = req.app.get('db')
+   const truckEvents = await db.get_truck_events()
+    res.status(200).send(truckEvents)
   }
 //   sendSMS: (req, res) => {
 //     const {name,message} = req.body
