@@ -53,7 +53,7 @@ class Header extends Component {
             }))} className="fas fa-hamburger"></i>
           </div>
           <div className={`menu-list-${this.state.toggle ? true : false}`}>         
-            <div onClick={() => this.redirect('/truckdash')} className="menu-item">
+            <div onClick={() => this.redirect('/')} className="menu-item">
               <h2>My Truck</h2>
             </div>
             <div onClick={() => this.redirect('/addevent')} className="menu-item">
