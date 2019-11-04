@@ -41,4 +41,23 @@ module.exports = {
       let remove = await db.delete_attend(id)
       res.status(200).send(remove)
   }
+//   sendSMS: (req, res) => {
+//     const {name,message} = req.body
+
+//     client.messages
+//         .create({
+//             body: name + ' sent: ' + message,
+//             from: "+18016530129",
+//             to: _twilio_recipient
+//         })
+//         .then(message => {
+//             console.log(message)
+//             //Do something with this information
+//             res.send(message)
+//         }).catch(err=>{
+//             console.log(err)
+//             res.sendStatus(500)
+//         })
+
+// }
 };

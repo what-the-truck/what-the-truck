@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+// import Twilio from '../../../Twilio'
 import { getFoodTruck } from "../../../ducks/truckReducer";
 import './TruckInfo.scss'
 
@@ -44,6 +45,7 @@ export class TruckInfo extends Component {
           <div>
             <div className="top-bar">
               <button className="follow">Follow +</button>
+              
               <h1>{ele.name}</h1>
             </div>
             <img src={ele.img} alt="" />
