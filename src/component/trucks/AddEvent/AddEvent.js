@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './AddEvent.scss'
 import axios from 'axios'
-import swal from 'sweetalert2'
-import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
+import { connect } from 'react-redux';
+import './AddEvent.scss'
+import swal from 'sweetalert2'
 
 
 class AddEvent extends Component {
