@@ -5,19 +5,46 @@ import { withRouter } from "react-router-dom";
 // import Twilio from '../../../Twilio'
 import { getFoodTruck } from "../../../ducks/truckReducer";
 import './TruckInfo.scss'
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import moment from 'moment'
+
 
 export class TruckInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodTruck: []
+      foodTruck: [],
+      truckEvents: [],
+      key: '',
     };
+    this.getTruckEvents = this.getTruckEvents.bind(this)
   }
-
+  
   componentDidMount() {
     this.getOneTruck();
+    this.getTruckEvents();
+    axios.get('/api/key').then(res => {
+      // console.log(res.data)
+      this.setState({ key: res.data[0].geo })
+    })
   }
-
+  async getTruckEvents() {
+    await axios.get('/api/truckevents').then(res => {
+      console.log(res.data)
+      const events = res.data.filter((el) => {
+        console.log(`${el.truck_id} is the same as ${this.props.match.params.id}?`)
+        return el.truck_id === +this.props.match.params.id
+      }
+      )
+      console.log(events)
+      this.setState({
+        truckEvents: events
+      })
+    }
+    )
+    await console.log(this.state.truckEvents)
+  }
+  
   getOneTruck = () => {
     const { id: truck_id } = this.props.match.params;
     console.log(this.props.match.params.id);
@@ -29,14 +56,19 @@ export class TruckInfo extends Component {
       // console.log(res.data);
     });
   };
-
+  
   handleChange = (e, key) => {
     this.setState({
       [key]: e.target.value
     });
   };
-
+  
   render() {
+    const magical = this.state.key
+    const mapStyles = {
+      width: '100%',
+      height: '50%',
+    };
     //  console.log(this.props)
     const { foodTruck } = this.state;
     let oneTruck = foodTruck.map(ele => {
@@ -45,7 +77,7 @@ export class TruckInfo extends Component {
           <div>
             <div className="top-bar">
               <button className="follow">Follow +</button>
-              
+
               <h1>{ele.name}</h1>
             </div>
             <img src={ele.img} alt="" />
@@ -67,9 +99,35 @@ export class TruckInfo extends Component {
               </div>
             </div>
           </div>
-          <div className="top-bar">
-            <h1> EVENT LIST</h1>
-            </div>
+          <div className="events">
+            <h1>Upcoming Events</h1>
+      
+            {this.state.truckEvents.map(el => {
+              return (
+                <div className="event-truck-box">
+                  <h2>
+                  {el.name}
+                  </h2>
+                  <h4>
+                  {el.address}
+                  </h4>
+                  <h3>{moment(el.date).format('ddd')}, {moment(el.date).format('ll')}</h3>
+                </div>
+              )
+            })}
+          </div>
+          <div>
+            <Map
+              google={this.props.google}
+              zoom={6}
+              style={mapStyles}
+              initialCenter={{ lat: 39.5272169, lng: -112.2104697 }}
+              >
+                {this.state.truckEvents.map(location => (
+                  <Marker position={{ lat: location.latitude, lng: location.longitude}} /> 
+                ))}
+           </Map>
+          </div>
         </div>
       );
     });
@@ -82,8 +140,8 @@ function mapStateToProps(store) {
   const { foodTruck, truck_id } = store.truckReducer;
   return { foodTruck, truck_id };
 }
+const WrappedContainer = GoogleApiWrapper({
+  apiKey: 'AIzaSyCdoLXSZawJqJ1T_ELmUQlm2cTRiVYoLpM'
+})(TruckInfo)
 
-export default connect(
-  mapStateToProps,
-  { getFoodTruck }
-)(withRouter(TruckInfo));
+export default connect(mapStateToProps, { getFoodTruck })(withRouter(WrappedContainer));
