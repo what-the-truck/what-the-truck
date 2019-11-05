@@ -29,7 +29,7 @@ class EventInfo extends Component {
   async getTruckEvents() {
     await axios.get("/api/truckevents").then(res => {
       const events = res.data.filter(el => {
-        return el.truck_id === +this.props.match.params.id;
+        return el.event_id === +this.props.match.params.id;
       });
       this.setState({
         truckEvents: events
@@ -57,14 +57,15 @@ class EventInfo extends Component {
   };
 
   render() {
-    const taco = this.state.key;
-    const { foodTruck } = this.props;
-    let allTrucks = foodTruck.map(trucks => {
+let {foodTruck} = this.props
+let {truckEvents} = this.state
+    let truckEvent = truckEvents.map(trucks => {
       return (
-        <div className="Trucks" key={trucks.truck_id} trucks={trucks}>
-          <img src={trucks.img} alt="" />
-          <h1>{trucks.name}</h1>
-        </div>
+        foodTruck.filter(el => {
+            return (
+                el.truck_id === trucks.truck_id
+            )
+        })
       );
     });
     const mapStyles = {
@@ -83,7 +84,7 @@ class EventInfo extends Component {
     return (
       <div>
         {oneEvent}
-        {allTrucks}
+        {truckEvent}
         <Map
           google={this.props.google}
           zoom={6}
