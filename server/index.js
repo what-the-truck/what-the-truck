@@ -8,6 +8,7 @@ const eventCtrl = require('./controllers/eventController')
 const truckCtrl = require('./controllers/truckController')
 const userCtrl = require('./controllers/userController')
 const authCtrl = require('./controllers/authController')
+const followCtrl = require('./controllers/followController')
 const twilio = require('twilio')
 
 const accountSid = _twilio_account_sid
@@ -45,6 +46,7 @@ app.get('/api/key', authCtrl.getKey)
 app.get('/api/truck/:truck_id',truckCtrl.getATruck)
 app.get('/api/truckevents', eventCtrl.getTruckEvents)
 // app.get('/api/truck',truckCtrl.getTruckDash)
+app.get('/api/follow/', followCtrl.getFollow)
 
 app.post('/auth/truck', authCtrl.registerTruck)
 app.post('/auth/user', authCtrl.registerUser)
@@ -52,6 +54,7 @@ app.post('/auth/trucklogin', authCtrl.loginTruck)
 app.post('/auth/userlogin', authCtrl.loginUser)
 app.post('/api/event', eventCtrl.addEvent)
 app.post('/api/attend', eventCtrl.addAttend)
+app.post('/api/follow/:id', followCtrl.addFollow)
 // app.post('/api/sendSMS',eventCtrl.sendSMS)
 
 
@@ -59,6 +62,7 @@ app.delete('/api/truck/:id', truckCtrl.deleteTruck)
 app.delete('/api/event/:id', eventCtrl.deleteEvent)
 app.delete('/api/attend/:id', eventCtrl.deleteAttend)
 app.delete('/auth/logout', authCtrl.logout)
+app.delete('/api/follow/:id', followCtrl.deleteFollow)
 
 // app.put('/api/event', eventCtrl.editEvent)
 // app.put('/api/user', userCtrl.editUser)
