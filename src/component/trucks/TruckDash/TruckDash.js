@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
 import './TruckDash.scss'
 import axios from "axios";
+import moment from 'moment'
 
 export class TruckDash extends Component {
   constructor(props) {
@@ -15,16 +16,18 @@ export class TruckDash extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getOneTruck();
+  async componentDidMount() {
+    // await alert(this.props.truckId)
+    await this.getOneTruck();
+    // await console.log(this.state.foodtruck)
     // console.log(this.props.foodTruck);
-    axios.get('/api/truckevents').then(res => {
+    await axios.get('/api/truckevents').then(res => {
       console.log(res.data)
       const events = res.data.filter((el) => {
         return el.truck_id === +this.props.truckId
       })
       this.setState({
-        myEvents: [events]
+        myEvents: events
       })
     })
   }
@@ -32,15 +35,26 @@ export class TruckDash extends Component {
   
 
   getOneTruck = () => {
-    let index = this.props.foodTruck.findIndex(
-      el => el.truck_id === this.props.truckId
-    );
-    this.setState({
-      foodtruck: this.props.foodTruck[index]
+    axios.get("/api/trucks").then(res => {
+      this.props.getFoodTruck(res.data);
+      console.log(this.props, this.state)
+      let index = res.data.findIndex(
+        el => el.truck_id === this.props.truckId
+      );
+  
+      // console.log("index", index)
+  
+      this.setState({
+        foodtruck: res.data[index]
+      });
     });
   };
 
-
+  deleteEvent = () => {
+    console.log(this.state)
+    axios.delete(`/api/event/${this.state.myEvents[0].event_id}`)
+    // .then(this.props.location)
+  }
   
 
   handleChange = (e, key) => {
@@ -49,11 +63,7 @@ export class TruckDash extends Component {
     });
   };
 
-  render() {
-    let {myEvents} = this.state
-    let truckEvents = myEvents.map(el => {
-
-    })
+  render() {    
     return (
       <div className="truck-dash-display">
         {/* <div className="top-bar">
@@ -73,8 +83,20 @@ export class TruckDash extends Component {
         </div>
         <div className="top-bar">
           <h1>My Events</h1>
-          {/* <h2>{myEvents}</h2> */}
         </div>
+          {this.state.myEvents.map(el => {
+            return (
+              <div className='event-truck-box'>
+                <h2>{el.name}</h2>
+                <h4>{el.address}</h4>
+                <h4>{moment(el.date).format('ddd')}, {moment(el.date).format('lll')}</h4>
+                <div className="edit-delete-buttons">
+                  {/* <button>Edit</button> */}
+                  <button onClick={this.deleteEvent()}>Delete</button>
+                </div>
+              </div>
+            )
+          })}
       </div>
     );
   }

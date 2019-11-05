@@ -55,8 +55,8 @@ class AddEvent extends Component {
 
     async addEvent() {
         await this.addressChange()
-        let {name, address, latitude, longitude, date, time} = this.state
-        await axios.post(`/api/event`, {name, address, date, latitude, longitude, time}).then(res => {
+        let {name, address, latitude, longitude, date} = this.state
+        await axios.post(`/api/event`, {name, address, date, latitude, longitude}).then(res => {
             // console.log(res.data)
             const event_id = res.data[0].event_id
             axios.post(`/api/attend`, {truckId: this.props.truckId, event_id})

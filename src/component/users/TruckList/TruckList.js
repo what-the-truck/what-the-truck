@@ -36,7 +36,7 @@ export class TruckList extends Component {
     let allTrucks = foodTruck.map(ele => {
       return (
         <div className="Trucks" key={ele.truck_id} ele={ele}>
-
+          
           <div className="left-list">
             <img src={ele.img} alt="" />
           </div>

@@ -64,3 +64,39 @@
     margin-left: 1vw;
     // border-radius: 15px;   
 }
+
+.event-truck-box {
+    h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        // background-color: #c4b5a2;
+        color: #470a0a;
+        height: auto;   
+        border-bottom: solid;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.edit-delete-buttons {
+    // border: solid green;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    button {
+        font-size: .9rem;
+        width: 20vw;
+        border-radius: 20px;
+        background: #470a0a;
+        color: #c4b5a2;
+        border-color: #470a0a;
+        border: solid 2px;
+        outline: #c4b5a2;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-weight: 700;
+    }
+}

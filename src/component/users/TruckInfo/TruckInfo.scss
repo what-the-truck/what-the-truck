@@ -46,7 +46,13 @@
     height:auto;
     padding: 2vw;
     margin-left: 1vw;
-    // border-radius: 15px;
+    a {
+        // background: blue;
+        max-width:100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    // border: solid red;
     
 }
 .truck-info-display {
@@ -65,7 +71,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         // background-color: #c4b5a2;
         color: #470a0a;
         height: auto;   
