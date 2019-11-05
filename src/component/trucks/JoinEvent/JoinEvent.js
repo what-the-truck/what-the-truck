@@ -29,11 +29,12 @@ export class JoinEvent extends Component {
 
   joinEvent = (event_id) => {
       const {truckId} = this.props
-      console.log(event_id,truckId,this.state,this.props)
+    //   console.log(event_id,truckId,this.state,this.props)
       axios.post("/api/attend", { event_id, truckId }).then(res => {
         this.props.getAttend(res.data);
       });
     };
+
     
 
   handleChange = (e, key) => {
@@ -41,6 +42,7 @@ export class JoinEvent extends Component {
       [key]: e.target.value
     });
   };
+
   render() {
     // console.log(this.props);
     let { events } = this.state;
