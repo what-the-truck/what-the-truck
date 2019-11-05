@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux';
 import './AddEvent.scss'
 import swal from 'sweetalert2'
+const {REACT_APP_TWILIO_RECIPIENT} = process.env
 
 
 class AddEvent extends Component {
@@ -21,7 +22,12 @@ class AddEvent extends Component {
             date: '',
             time: '',
             key: '',
+            text: {
+                recipient: REACT_APP_TWILIO_RECIPIENT,
+                message: "Testing twilio 2"
+              }
         }
+        this.addressChange = this.addressChange.bind(this)
     }
 
     componentDidMount() {
@@ -54,6 +60,7 @@ class AddEvent extends Component {
     }
 
     async addEvent() {
+        const {text} = this.state
         await this.addressChange()
         let {name, address, latitude, longitude, date, time} = this.state
         await axios.post(`/api/event`, {name, address, date, latitude, longitude, time}).then(res => {
@@ -63,7 +70,9 @@ class AddEvent extends Component {
             swal.fire({type: 'success', text: res.data.message, timer: 1700})
         })
         
-        
+        await axios.get(
+            `/send-text?recipient=${text.recipient}&textmessage=${text.message}`
+          );
         await this.props.history.push(`/`)
     }
 
@@ -96,6 +105,7 @@ class AddEvent extends Component {
                     value={this.state.time}
                     onChange={e => this.handleChange(e, "time")}
                     placeholder="Time"/> */}
+                
                 <button className="button2" onClick={() => this.addEvent()}>Submit</button>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-// import Twilio from '../../../Twilio'
+import Twilio from '../../../Twilio'
 import { getFoodTruck } from "../../../ducks/truckReducer";
 import './TruckInfo.scss'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';

@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require ('massive')
-const {REACT_APP_TWILIO_RECIPIENT,SERVER_PORT, CONNECTION_STRING, SECRET, KEY,_twilio_account_sid,_twilio_auth_token} = process.env
+const {TWILIO_MESSAGING_SERVICE_SID,REACT_APP_TWILIO_RECIPIENT,SERVER_PORT, CONNECTION_STRING, SECRET, KEY,_twilio_account_sid,_twilio_auth_token} = process.env
 const app = express()
 const session = require ('express-session')
 const eventCtrl = require('./controllers/eventController')
@@ -68,6 +68,7 @@ app.delete('/api/follow/:id', followCtrl.deleteFollow)
 // app.put('/api/user', userCtrl.editUser)
 
 //sending twilio alert
+
 app.get('/send-text',(req,res) => {
     console.log(req.query)
     const {recipient,textmessage} = req.query
@@ -77,5 +78,27 @@ app.get('/send-text',(req,res) => {
         from:"+18016530129" //add twilio number
     })
 .then((message) => console.log(message.body))})
+
+
+// const numbers = []
+// Promise.all(
+//     numbers.map(number => {
+//         return twilio.messages.create({
+//             to:number,
+//             from: process.env.TWILIO_MESSAGING_SERVICE_SID,
+//             body:body
+//         })
+//     })
+// )
+// .then(messages => {
+//     console.log('Messages sent!')
+// })
+// .catch(err => console.error(err))
+
+
+
+
+
+
 
 app.listen(SERVER_PORT, ()=> console.log(`I made ${SERVER_PORT} Dr Peppers just for you!`))
