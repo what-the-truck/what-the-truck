@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { withRouter,Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
-import "./TruckList.scss"
+import "./TruckList.scss";
 export class TruckList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodTruck: []
+      foodTruck: [],
+      filteredtruck: [],
+      filteredId: 0,
+      userInput: ""
     };
   }
 
@@ -24,6 +27,23 @@ export class TruckList extends Component {
     });
   };
 
+  getTruck = userInput => {
+    // let {filteredTruck} = this.state
+    let filteredTruck = this.state.foodTruck.filter(ele => {
+      return ele.name.toLowerCase().includes(userInput.toLowerCase());
+    });
+    if (filteredTruck[0]) {
+      this.setState({
+        filteredTruck: filteredTruck[0].name,
+        filteredTruck: filteredTruck[0].description,
+        filteredTruck: filteredTruck[0].food_type,
+        filteredTruck: filteredTruck[0].img
+      });
+    } else {
+      alert("Truck Does Not Exist");
+    }
+  };
+
   handleChange = (e, key) => {
     this.setState({
       [key]: e.target.value
@@ -36,18 +56,23 @@ export class TruckList extends Component {
     let allTrucks = foodTruck.map(ele => {
       return (
         <div className="Trucks" key={ele.truck_id} ele={ele}>
-
+         
           <div className="left-list">
             <img src={ele.img} alt="" />
           </div>
           <div className="right-list">
-            <h1 onClick={()=>this.props.history.push(`/truckinfo/${ele.truck_id}`)}>{ele.name}</h1>
+            <h1
+              onClick={() =>
+                this.props.history.push(`/truckinfo/${ele.truck_id}`)
+              }
+            >
+              {ele.name}
+            </h1>
             <h2>{ele.food_type}</h2>
             <p>{ele.description}</p>
             {/* <h1>Phone: {ele.phone}</h1> */}
             {/* <h1>Email:{ele.email}</h1> */}
           </div>
-
         </div>
       );
     });
