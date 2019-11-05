@@ -18,9 +18,22 @@ export class TruckDash extends Component {
 
   async componentDidMount() {
     // await alert(this.props.truckId)
-    await this.getOneTruck();
+    await this.getOneTruck()
+    await this.getEvents();
     // await console.log(this.state.foodtruck)
     // console.log(this.props.foodTruck);
+    // await axios.get('/api/truckevents').then(res => {
+    //   console.log(res.data)
+    //   const events = res.data.filter((el) => {
+    //     return el.truck_id === +this.props.truckId
+    //   })
+    //   this.setState({
+    //     myEvents: events
+    //   })
+    // })
+  }
+
+   getEvents = async () => {
     await axios.get('/api/truckevents').then(res => {
       console.log(res.data)
       const events = res.data.filter((el) => {
@@ -31,7 +44,6 @@ export class TruckDash extends Component {
       })
     })
   }
-
   
 
   getOneTruck = () => {
@@ -50,10 +62,11 @@ export class TruckDash extends Component {
     });
   };
 
-  deleteEvent = () => {
+  deleteEvent = async (id) => {
     console.log(this.state)
-    axios.delete(`/api/event/${this.state.myEvents[0].event_id}`)
+    await axios.delete(`/api/event/${id}`)
     // .then(this.props.location)
+    await this.getEvents()
   }
   
 
@@ -92,7 +105,7 @@ export class TruckDash extends Component {
                 <h4>{moment(el.date).format('ddd')}, {moment(el.date).format('lll')}</h4>
                 <div className="edit-delete-buttons">
                   {/* <button>Edit</button> */}
-                  <button onClick={this.deleteEvent()}>Delete</button>
+                  <button onClick={() =>this.deleteEvent(el.event_id)}>Delete</button>
                 </div>
               </div>
             )
