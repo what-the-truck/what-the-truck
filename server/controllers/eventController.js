@@ -12,14 +12,15 @@ module.exports = {
   addEvent: async (req, res) => {
     const db = req.app.get("db");
     const { name, address, latitude, longitude, date, time } = req.body;
-    const event = await db.add_event([
-      name,
+    const event = await db.events.insert([
+      {name,
       address,
       latitude,
       longitude,
       date,
-      time
+      time}
     ]);
+    console.log(event)
     res.status(200).send(event);
   },
   getAllAttend: async (req,res)=> {

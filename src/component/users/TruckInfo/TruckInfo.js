@@ -121,12 +121,17 @@ checkFollow=()=> {
             <div className="info-box">
               <div className="info-left">
                 <h2>{ele.food_type}</h2>
-                <h3>{ele.description}</h3>
+                <h4>{ele.description}</h4>
               </div>
               <div className="info-right">
                 <h2>Contact </h2>
-                <h3>{ele.phone}</h3>
-                <h3>{ele.email}</h3>
+                <h4>{ele.phone}</h4>
+                <h4>{ele.email}</h4>
+                <h3>
+                  <a href={`https://${ele.website}`} target='_blank' rel='noopener noreferrer'>
+                    {ele.website}
+                  </a>
+                </h3>
               </div>
             </div>
           </div>
@@ -150,14 +155,14 @@ checkFollow=()=> {
           <div>
             <Map
               google={this.props.google}
-              zoom={6}
+              zoom={7.3}
               style={mapStyles}
-              initialCenter={{ lat: 39.5272169, lng: -112.2104697 }}
-            >
-              {this.state.truckEvents.map(location => (
-                <Marker position={{ lat: location.latitude, lng: location.longitude }} />
-              ))}
-            </Map>
+              initialCenter={{ lat: 40.391617, lng: -111.850769 }}
+              >
+                {this.state.truckEvents.map(location => (
+                  <Marker position={{ lat: location.latitude, lng: location.longitude}} /> 
+                ))}
+           </Map>
           </div>
         </div>
       );

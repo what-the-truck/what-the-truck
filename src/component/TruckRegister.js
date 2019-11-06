@@ -18,6 +18,7 @@ export class TruckRegister extends Component {
             img: '',
             food_type: '',
             description: '',
+            website: '',
         }
     }
 
@@ -38,12 +39,12 @@ export class TruckRegister extends Component {
             this.state.description === '')
             {return (swal.fire({type: 'error', text: "Please fill out all information", timer: 1500}))
         } else {
-            const {email, password, name, phone, img, food_type, description} = this.state
-            const res = await axios.post('/auth/truck', {email, password, name, phone, img, food_type, description})
+            const {email, password, name, phone, img, food_type, description, website} = this.state
+            const res = await axios.post('/auth/truck', {email, password, name, phone, img, food_type, description, website})
             if(res.data.truck) {
-                this.props.setTruck(res.data.truck, res.data.loggedIn)
-                swal.fire({text: 'Please login now', type: 'success', timer: 1800})
-                this.props.history.push('/login')
+                await this.props.setTruck(res.data.truck)
+                await this.props.history.push('/')
+                await swal.fire({text: 'Welcome!', type: 'success', timer: 1800})
             } else {
             // this.props.setUser(res.data.truck, res.data.loggedIn)
             swal.fire({type: 'error', text: res.data.message, timer: 1500})
@@ -101,6 +102,13 @@ export class TruckRegister extends Component {
                     value={this.state.food_type}
                     name='type'
                     id='Type'/>
+                <input 
+                    type="text"
+                    onChange={e => this.handleChange(e, "website")}
+                    placeholder="Website URL(optional)"
+                    value={this.state.website}
+                    name="website"
+                    id="Website"/>
                 <textarea type="text" placeholder="Description" 
                     onChange={e => this.handleChange(e, "description")} 
                     value={this.state.description} 

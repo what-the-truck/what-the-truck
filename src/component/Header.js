@@ -63,9 +63,9 @@ class Header extends Component {
             {/* <div onClick={() => this.redirect('/joinevent')} className="menu-item">
               <h2>Join Event</h2>
             </div> */}
-            <div onClick={() => this.redirect('/mymenu')} className="menu-item">
+            {/* <div onClick={() => this.redirect('/mymenu')} className="menu-item">
               <h2>My menu</h2>
-            </div>
+            </div> */}
             <div onClick={() => this.logout1()} className="menu-item">
               <h2>Logout</h2>
             </div>

@@ -7,7 +7,7 @@ module.exports = {
     },
     async registerTruck(req, res) {
         const db = req.app.get('db')
-        const { name, phone, img, food_type, description, password, email } = req.body
+        const { name, phone, img, food_type, description, password, email, website } = req.body
 
         // Check to see if the user has already registered
         const truck = await db.find_email(email)
@@ -18,7 +18,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
         // Store the new user in the DB
-        const newTruck = await db.add_truck({ name, phone, img, food_type, description, hash, email}).catch(err => {
+        const newTruck = await db.add_truck({ name, phone, img, food_type, description, hash, email, website}).catch(err => {
             return res.sendStatus(503)
         })
         // Store the new user in sessions
@@ -32,7 +32,7 @@ module.exports = {
         // Send the session.user object to the front end
         res
             .status(201)
-            .send({ message: 'Logged in', truck: req.session.truck })
+            .send({ message: 'You are now registered', truck: req.session.truck })
     },
     async registerUser(req, res) {
         const db = req.app.get('db')
