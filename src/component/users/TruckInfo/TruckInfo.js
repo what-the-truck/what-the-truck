@@ -94,7 +94,7 @@ checkFollow=()=> {
         imageUrl: this.state.foodTruck[0].img, 
         imageWidth: 400,
         imageHeight:200,
-        timer: 2000})
+        timer: 2500})
       // alert('You are now following')
       axios.post(`api/follow/${this.props.match.params.id}`, {userid:this.props.userId} ).then(this.checkFollow()
       )
