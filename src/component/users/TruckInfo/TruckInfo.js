@@ -7,6 +7,7 @@ import { getFoodTruck } from "../../../ducks/truckReducer";
 import './TruckInfo.scss'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import moment from 'moment'
+import swal from 'sweetalert2'
 
 
 export class TruckInfo extends Component {
@@ -34,10 +35,10 @@ export class TruckInfo extends Component {
   }
 
 checkFollow=()=> {
-  console.log('checking follow')
+  // console.log('checking follow')
   if(this.props.userId !== null){
     axios.get(`/api/follow/?userId=${this.props.userId}&truckId=${this.props.match.params.id}`).then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       if(res.data[0] !== undefined){
         this.setState({
           button: 'Unfollow',
@@ -53,24 +54,24 @@ checkFollow=()=> {
 
   async getTruckEvents() {
     await axios.get('/api/truckevents').then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       const events = res.data.filter((el) => {
-        console.log(`${el.truck_id} is the same as ${this.props.match.params.id}?`)
+        // console.log(`${el.truck_id} is the same as ${this.props.match.params.id}?`)
         return el.truck_id === +this.props.match.params.id
       }
       )
-      console.log(events)
+      // console.log(events)
       this.setState({
         truckEvents: events
       })
     }
     )
-    await console.log(this.state.truckEvents)
+    // await console.log(this.state.truckEvents)
   }
 
   getOneTruck = () => {
     const { id: truck_id } = this.props.match.params;
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
     axios.get(`/api/truck/${truck_id}`).then(res => {
       //   this.props.getFoodTruck(res.data);
       this.setState({
@@ -87,12 +88,22 @@ checkFollow=()=> {
   };
   async followButton(){
     if(this.state.button === 'Follow +'){
-      alert('You are now following')
-      axios.post(`api/follow/${this.props.match.params.id}`, {userid:this.props.userId} ).then(this.checkFollow())
+      swal.fire({
+        title: "Sweet!",
+        text: "You are now following this truck", 
+        imageUrl: this.state.foodTruck[0].img, 
+        imageWidth: 400,
+        imageHeight:200,
+        timer: 2000})
+      // alert('You are now following')
+      axios.post(`api/follow/${this.props.match.params.id}`, {userid:this.props.userId} ).then(this.checkFollow()
+      )
     }
     else{
+      swal.fire({text:'No longer following', type: 'success', timer: 2000})
       // alert(this.state.followId)
       await axios.delete(`api/follow/${this.state.followId}`).then(this.checkFollow())
+      // console.log(this.state)
     }
     this.setState({
       button: 'Follow +'

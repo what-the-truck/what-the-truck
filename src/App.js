@@ -16,7 +16,7 @@ class App extends Component {
   }
   componentDidMount() {
     axios.get("/auth/check").then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data === "none") {
         this.props.setUser(null);
         this.props.setTruck({truckId: null, name: null, email: null})
@@ -38,7 +38,7 @@ class App extends Component {
     }
   }
   async logout(){
-    console.log('hit logout on app.js')
+    // console.log('hit logout on app.js')
     await axios.delete('/auth/logout')
     // console.log(this.state)
     await this.checkUser()

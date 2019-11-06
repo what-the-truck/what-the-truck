@@ -64,7 +64,7 @@ module.exports = {
     async loginTruck(req, res) {
         const db = req.app.get('db')
         const { email, password } = req.body
-        console.log(email, password)
+        // console.log(email, password)
         // check if user exists (and the hash)
         const user = await db.find_truck(email)
         // if user doesn't exist, send appropriate response
@@ -84,7 +84,7 @@ module.exports = {
     async loginUser (req, res) {
         const db = req.app.get('db')
         const { email, password } = req.body
-        console.log(email, password)
+        // console.log(email, password)
         // check if user exists (and the hash)
         const user = await db.find_user(email)
         // if user doesn't exist, send appropriate response
@@ -102,16 +102,16 @@ module.exports = {
             .send({ message: 'Logged in', user: req.session.user, loggedIn: true })
     },
     logout(req, res) {
-        console.log('logout hit')
+        // console.log('logout hit')
         req.session.destroy()
         res.status(200).send({ message: 'Logged out', loggedIn: false })
     },
     getUser: async (req, res) => {
-        console.log(req.session.user)
+        // console.log(req.session.user)
         res.status(200).send(req.session.user)
     },
     checkUser: async (req, res) => {
-        console.log('hit')
+        // console.log('hit')
         if(req.session.user) {
             res.status(200).send(req.session.user)
         }
