@@ -62,15 +62,15 @@ class AddEvent extends Component {
     async addEvent() {
         const {text} = this.state
         await this.addressChange()
-        let {name, address, latitude, longitude, date, time} = this.state
-        await axios.post(`/api/event`, {name, address, date, latitude, longitude, time}).then(res => {
+        let {name, address, latitude, longitude, date} = this.state
+        await axios.post(`/api/event`, {name, address, date, latitude, longitude}).then(res => {
             // console.log(res.data)
             const event_id = res.data[0].event_id
             axios.post(`/api/attend`, {truckId: this.props.truckId, event_id})
-            swal.fire({type: 'success', text: res.data.message, timer: 1700})
+            swal.fire({type: 'success', text: 'Event added', timer: 1700})
         })
         
-        await axios.get(
+        axios.get(
             `/send-text?recipient=${text.recipient}&textmessage=${text.message}`
           );
         await this.props.history.push(`/`)

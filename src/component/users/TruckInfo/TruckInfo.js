@@ -16,18 +16,41 @@ export class TruckInfo extends Component {
       foodTruck: [],
       truckEvents: [],
       key: '',
+      button: 'Follow +',
+      following: '',
+      followId: 0,
     };
     this.getTruckEvents = this.getTruckEvents.bind(this)
   }
-  
+
   componentDidMount() {
     this.getOneTruck();
     this.getTruckEvents();
+    this.checkFollow()
     axios.get('/api/key').then(res => {
       // console.log(res.data)
       this.setState({ key: res.data[0].geo })
     })
   }
+
+checkFollow=()=> {
+  console.log('checking follow')
+  if(this.props.userId !== null){
+    axios.get(`/api/follow/?userId=${this.props.userId}&truckId=${this.props.match.params.id}`).then(res => {
+      console.log(res.data)
+      if(res.data[0] !== undefined){
+        this.setState({
+          button: 'Unfollow',
+          followId: res.data[0].follow_id
+        })
+      } 
+    })
+  }
+  else{
+    
+  }
+}
+
   async getTruckEvents() {
     await axios.get('/api/truckevents').then(res => {
       console.log(res.data)
@@ -44,7 +67,7 @@ export class TruckInfo extends Component {
     )
     await console.log(this.state.truckEvents)
   }
-  
+
   getOneTruck = () => {
     const { id: truck_id } = this.props.match.params;
     console.log(this.props.match.params.id);
@@ -56,14 +79,27 @@ export class TruckInfo extends Component {
       // console.log(res.data);
     });
   };
-  
+
   handleChange = (e, key) => {
     this.setState({
       [key]: e.target.value
     });
   };
-  
-  render() {
+  async followButton(){
+    if(this.state.button === 'Follow +'){
+      alert('You are now following')
+      axios.post(`api/follow/${this.props.match.params.id}`, {userid:this.props.userId} ).then(this.checkFollow())
+    }
+    else{
+      // alert(this.state.followId)
+      await axios.delete(`api/follow/${this.state.followId}`).then(this.checkFollow())
+    }
+    this.setState({
+      button: 'Follow +'
+    })
+  }
+
+  render() { 
     const magical = this.state.key
     const mapStyles = {
       width: '100%',
@@ -76,34 +112,40 @@ export class TruckInfo extends Component {
         <div className="truck-info-display" key={ele.truck_id} ele={ele}>
           <div>
             <div className="top-bar">
-              <button className="follow">Follow +</button>
-              <Twilio/>
+              
+              <button onClick={()=>this.followButton()} className="follow">{this.state.button}</button>
+
               <h1>{ele.name}</h1>
             </div>
             <img src={ele.img} alt="" />
             <div className="info-box">
               <div className="info-left">
                 <h2>{ele.food_type}</h2>
-                <h3>{ele.description}</h3>
+                <h4>{ele.description}</h4>
               </div>
               <div className="info-right">
                 <h2>Contact </h2>
-                <h3>{ele.phone}</h3>
-                <h3>{ele.email}</h3>
+                <h4>{ele.phone}</h4>
+                <h4>{ele.email}</h4>
+                <h3>
+                  <a href={`https://${ele.website}`} target='_blank' rel='noopener noreferrer'>
+                    {ele.website}
+                  </a>
+                </h3>
               </div>
             </div>
           </div>
           <div className="events">
             <h1>Upcoming Events</h1>
-      
+
             {this.state.truckEvents.map(el => {
               return (
                 <div className="event-truck-box">
                   <h2>
-                  {el.name}
+                    {el.name}
                   </h2>
                   <h4>
-                  {el.address}
+                    {el.address}
                   </h4>
                   <h3>{moment(el.date).format('ddd')}, {moment(el.date).format('ll')}</h3>
                 </div>
@@ -113,9 +155,9 @@ export class TruckInfo extends Component {
           <div>
             <Map
               google={this.props.google}
-              zoom={6}
+              zoom={7.3}
               style={mapStyles}
-              initialCenter={{ lat: 39.5272169, lng: -112.2104697 }}
+              initialCenter={{ lat: 40.391617, lng: -111.850769 }}
               >
                 {this.state.truckEvents.map(location => (
                   <Marker position={{ lat: location.latitude, lng: location.longitude}} /> 
@@ -132,7 +174,8 @@ export class TruckInfo extends Component {
 
 function mapStateToProps(store) {
   const { foodTruck, truck_id } = store.truckReducer;
-  return { foodTruck, truck_id };
+  const {userId} = store.userReducer
+  return { foodTruck, truck_id, userId };
 }
 const WrappedContainer = GoogleApiWrapper({
   apiKey: 'AIzaSyCdoLXSZawJqJ1T_ELmUQlm2cTRiVYoLpM'

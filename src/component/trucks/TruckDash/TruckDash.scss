@@ -1,0 +1,102 @@
+.truck-dash-display {
+    background-color: #470a0a;
+    img {
+        width: 100vw;
+        max-width: 100vw;
+    }
+    h1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.8rem;
+        background-color: #470a0a;
+        color: #c4b5a2;
+        height: 7vh;   
+        width: 75vw;
+        // border-left: solid 2px;
+    }
+    h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        // background-color: #c4b5a2;
+        color: #470a0a;
+        height: auto;   
+        border-bottom: solid;
+    }
+    h3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        font-style: italic;
+        // background-color: #470a0a;
+        color: #470a0a;
+        height: auto; 
+        margin-top: 2px;
+
+    }
+}
+
+
+.info-box {
+    display: flex;
+    width: 100vw;
+    background-color: #c4b5a2;
+}
+
+.info-left {
+    background-color: #c4b5a2;
+    width: 49vw;
+    height:auto;
+    padding: 2vw;
+    margin-left: 1vw;
+    // border-radius: 15px;
+
+}
+.info-right {
+    margin-right: 1vw;
+    background-color: #c4b5a2;
+    width: 49vw;
+    height:auto;
+    padding: 2vw;
+    margin-left: 1vw;
+    // border-radius: 15px;   
+}
+
+.event-truck-box {
+    h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        // background-color: #c4b5a2;
+        color: #470a0a;
+        height: auto;   
+        border-bottom: solid;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.edit-delete-buttons {
+    // border: solid green;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    button {
+        font-size: .9rem;
+        width: 20vw;
+        border-radius: 20px;
+        background: #470a0a;
+        color: #c4b5a2;
+        border-color: #470a0a;
+        border: solid 2px;
+        outline: #c4b5a2;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-weight: 700;
+    }
+}

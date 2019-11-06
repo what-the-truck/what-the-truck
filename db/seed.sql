@@ -116,3 +116,6 @@ ALTER TABLE "specific_orders" ADD CONSTRAINT "specific_orders_fk1" FOREIGN KEY (
 ALTER TABLE "follows" ADD CONSTRAINT "follows_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("user_id");
 ALTER TABLE "follows" ADD CONSTRAINT "follows_fk1" FOREIGN KEY ("truck_id") REFERENCES "trucks"("truck_id");
 
+
+ALTER TABLE events 
+ADD COLUMN date timestamp;

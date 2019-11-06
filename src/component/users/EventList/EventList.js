@@ -54,8 +54,8 @@ export class EventList extends Component {
 
             <h1>{ele.name}</h1>
             <h2>{ele.address}</h2>
-            <h2>{moment(ele.date).format('ddd')}, {moment(ele.date).format('ll')}</h2>
-            <h2>{ele.time}</h2>
+            <h2>{moment(ele.date).format('ddd')}, {moment(ele.date).format('lll')}</h2>
+            {/* <h2>{ele.time}</h2> */}
             <h3>Trucks Attending:</h3>
             <h4></h4>
             {attend.filter(el => {
