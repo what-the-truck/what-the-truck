@@ -25,7 +25,7 @@ class Header extends Component {
   }
 
   logout1 = () => {
-    console.log('logout1 on header')
+    // console.log('logout1 on header')
     this.props.logout()
     this.setState(prevState => ({
       toggle: !prevState.toggle

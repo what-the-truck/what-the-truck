@@ -35,13 +35,13 @@ class EventInfo extends Component {
         truckEvents: events
       });
     });
-    await console.log(this.state.truckEvents);
+    // await console.log(this.state.truckEvents);
   }
 
   getTrucks = () => {
     axios.get("/api/trucks").then(res => {
-      console.log("hit");
-      console.log(res.data);
+      // console.log("hit");
+      // console.log(res.data);
       this.props.getFoodTruck(res.data);
     });
   };

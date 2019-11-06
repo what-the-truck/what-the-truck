@@ -20,16 +20,16 @@ export class TruckList extends Component {
 
   getTrucks = () => {
     axios.get("/api/trucks").then(res => {
-      console.log("hit");
-      console.log(res.data);
-      console.log(this.props.getFoodTruck)
+      // console.log("hit");
+      // console.log(res.data);
+      // console.log(this.props.getFoodTruck)
       this.props.getFoodTruck(res.data);
     });
   };
 
   getTruck = () => {
     let {getFoodTruck} = this.props
-    console.log(this.props.getFoodTruck)
+    // console.log(this.props.getFoodTruck)
     let filteredTruck = this.props.foodTruck.filter(ele => {
       return ele.food_type.toLowerCase().includes(this.state.userInput.toLowerCase()) || ele.name.toLowerCase().includes(this.state.userInput.toLowerCase());
     });
@@ -47,8 +47,8 @@ export class TruckList extends Component {
   };
 
   render() {
-    console.log(this.state.foodTruck);
-    console.log(this.props.foodTruck)
+    // console.log(this.state.foodTruck);
+    // console.log(this.props.foodTruck)
     const { foodTruck } = this.props;
     let allTrucks = foodTruck.map(ele => {
       return (
@@ -73,8 +73,16 @@ export class TruckList extends Component {
         </div>
       );
     });
-    return <div className="Truck-List"><input type="text" onChange={(e) => {this.setState({userInput:e.target.value})}}/>
-    <button onClick={this.getTruck}>SEARCH</button>
+    return <div className="Truck-List">
+      <div className="search">
+        <input 
+          type="text" 
+          onChange={(e) => {this.setState({userInput:e.target.value})}}/>
+        <button 
+          className="search-bar-button" 
+          onClick={this.getTruck}>SEARCH</button>
+
+      </div>
     {allTrucks}
     
     </div>;

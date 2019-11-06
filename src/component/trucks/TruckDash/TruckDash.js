@@ -35,7 +35,7 @@ export class TruckDash extends Component {
 
    getEvents = async () => {
     await axios.get('/api/truckevents').then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       const events = res.data.filter((el) => {
         return el.truck_id === +this.props.truckId
       })
@@ -49,7 +49,7 @@ export class TruckDash extends Component {
   getOneTruck = () => {
     axios.get("/api/trucks").then(res => {
       this.props.getFoodTruck(res.data);
-      console.log(this.props, this.state)
+      // console.log(this.props, this.state)
       let index = res.data.findIndex(
         el => el.truck_id === this.props.truckId
       );
@@ -63,7 +63,7 @@ export class TruckDash extends Component {
   };
 
   deleteEvent = async (id) => {
-    console.log(this.state)
+    // console.log(this.state)
     await axios.delete(`/api/event/${id}`)
     // .then(this.props.location)
     await this.getEvents()
