@@ -71,7 +71,7 @@ class AddEvent extends Component {
         })
         
         axios.get(
-            `/send-text?recipient=${text.recipient}&textmessage=${text.message}`
+            `/send-text?recipient=${text.recipient}&textmessage=``${this.props.name} has created a new event.``
           );
         await this.props.history.push(`/`)
     }
@@ -114,8 +114,8 @@ class AddEvent extends Component {
 }
 
 function mapStateToProps(store) {
-    const {truckId} = store.truckReducer;
-    return {truckId}
+    const {truckId, name} = store.truckReducer;
+    return {truckId, name}
 }
 
 export default connect(mapStateToProps)(withRouter(AddEvent))
