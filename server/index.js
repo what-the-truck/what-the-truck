@@ -37,6 +37,8 @@ app.use(
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static(`${__dirname}/../build`))
+app.use("/static", express.static("./media"))
 
 app.get('/api/trucks', truckCtrl.getAllTrucks)
 app.get('/api/events', eventCtrl.getAllEvents)
