@@ -8,8 +8,7 @@ export class TruckList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodTruck: [],
-      filteredtruck: [],
+      filteredTruck: [],
       filteredId: 0,
       userInput: ""
     };
@@ -23,22 +22,19 @@ export class TruckList extends Component {
     axios.get("/api/trucks").then(res => {
       console.log("hit");
       console.log(res.data);
+      console.log(this.props.getFoodTruck)
       this.props.getFoodTruck(res.data);
     });
   };
 
-  getTruck = userInput => {
-    // let {filteredTruck} = this.state
-    let filteredTruck = this.state.foodTruck.filter(ele => {
-      return ele.name.toLowerCase().includes(userInput.toLowerCase());
+  getTruck = () => {
+    let {getFoodTruck} = this.props
+    console.log(this.props.getFoodTruck)
+    let filteredTruck = this.props.foodTruck.filter(ele => {
+      return ele.food_type.toLowerCase().includes(this.state.userInput.toLowerCase()) || ele.name.toLowerCase().includes(this.state.userInput.toLowerCase());
     });
     if (filteredTruck[0]) {
-      this.setState({
-        filteredTruck: filteredTruck[0].name,
-        filteredTruck: filteredTruck[0].description,
-        filteredTruck: filteredTruck[0].food_type,
-        filteredTruck: filteredTruck[0].img
-      });
+      getFoodTruck(filteredTruck)
     } else {
       alert("Truck Does Not Exist");
     }
@@ -51,7 +47,8 @@ export class TruckList extends Component {
   };
 
   render() {
-    // console.log(this.props);
+    console.log(this.state.foodTruck);
+    console.log(this.props.foodTruck)
     const { foodTruck } = this.props;
     let allTrucks = foodTruck.map(ele => {
       return (
@@ -76,7 +73,11 @@ export class TruckList extends Component {
         </div>
       );
     });
-    return <div className="Truck-List">{allTrucks}</div>;
+    return <div className="Truck-List"><input type="text" onChange={(e) => {this.setState({userInput:e.target.value})}}/>
+    <button onClick={this.getTruck}>SEARCH</button>
+    {allTrucks}
+    
+    </div>;
   }
 }
 
