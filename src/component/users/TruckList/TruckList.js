@@ -3,12 +3,14 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter} from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
-import "./TruckList.scss"
+import "./TruckList.scss";
 export class TruckList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodTruck: []
+      filteredTruck: [],
+      filteredId: 0,
+      userInput: ""
     };
   }
 
@@ -20,8 +22,22 @@ export class TruckList extends Component {
     axios.get("/api/trucks").then(res => {
       console.log("hit");
       console.log(res.data);
+      console.log(this.props.getFoodTruck)
       this.props.getFoodTruck(res.data);
     });
+  };
+
+  getTruck = () => {
+    let {getFoodTruck} = this.props
+    console.log(this.props.getFoodTruck)
+    let filteredTruck = this.props.foodTruck.filter(ele => {
+      return ele.food_type.toLowerCase().includes(this.state.userInput.toLowerCase()) || ele.name.toLowerCase().includes(this.state.userInput.toLowerCase());
+    });
+    if (filteredTruck[0]) {
+      getFoodTruck(filteredTruck)
+    } else {
+      alert("Truck Does Not Exist");
+    }
   };
 
   handleChange = (e, key) => {
@@ -31,7 +47,8 @@ export class TruckList extends Component {
   };
 
   render() {
-    // console.log(this.props);
+    console.log(this.state.foodTruck);
+    console.log(this.props.foodTruck)
     const { foodTruck } = this.props;
     let allTrucks = foodTruck.map(ele => {
       return (
@@ -41,17 +58,26 @@ export class TruckList extends Component {
             <img src={ele.img} alt="" />
           </div>
           <div className="right-list">
-            <h1 onClick={()=>this.props.history.push(`/truckinfo/${ele.truck_id}`)}>{ele.name}</h1>
+            <h1
+              onClick={() =>
+                this.props.history.push(`/truckinfo/${ele.truck_id}`)
+              }
+            >
+              {ele.name}
+            </h1>
             <h2>{ele.food_type}</h2>
             <p>{ele.description}</p>
             {/* <h1>Phone: {ele.phone}</h1> */}
             {/* <h1>Email:{ele.email}</h1> */}
           </div>
-
         </div>
       );
     });
-    return <div className="Truck-List">{allTrucks}</div>;
+    return <div className="Truck-List"><input type="text" onChange={(e) => {this.setState({userInput:e.target.value})}}/>
+    <button onClick={this.getTruck}>SEARCH</button>
+    {allTrucks}
+    
+    </div>;
   }
 }
 
