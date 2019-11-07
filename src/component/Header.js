@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import "./Header.scss";
 import { withRouter } from 'react-router-dom'
+import Fade from 'react-reveal/Fade'
 
 class Header extends Component {
   constructor(props) {

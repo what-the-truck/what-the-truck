@@ -18,7 +18,10 @@
     flex-direction: column;
     background-color: #c4b5a2;
     box-shadow: 0px 0px 20px 0px #1b0303;
-    outline: none;
+    input {
+
+        outline: none;
+    }
     // border: solid green;
 }
 .login-container > input {
@@ -29,5 +32,6 @@
     width: 90vw;
     display: flex;
     justify-content: space-evenly;
+    outline: none;
     // border: solid red;
 }

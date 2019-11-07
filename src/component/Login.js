@@ -6,6 +6,7 @@ import { setTruck } from "../ducks/truckReducer";
 import { withRouter} from "react-router-dom";
 import swal from "sweetalert2";
 import "./Login.scss";
+import Reveal from 'react-reveal/Reveal'
 
 export class Login extends Component {
   state = {
@@ -51,6 +52,8 @@ export class Login extends Component {
 
   render() {
     return (
+      <Reveal>
+
       <div className="login">
         <div className="login-container">
           <input
@@ -73,6 +76,7 @@ export class Login extends Component {
           </button>
         </div>
       </div>
+      </Reveal>
     );
   }
 }

@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 import {setUser} from '../ducks/userReducer'
 import {connect} from 'react-redux'
 import './CustRegister.scss'
+import Reveal from 'react-reveal/Reveal'
 
 class CustRegister extends Component {
     constructor() {
@@ -41,6 +42,8 @@ class CustRegister extends Component {
 
     render() {
         return (
+            <Reveal>
+
             <div className='cust-register'>
                 <div className="cust-container-box">
                 {/* <h1>User Registration</h1> */}
@@ -63,6 +66,7 @@ class CustRegister extends Component {
                 </div>
                 
             </div>
+            </Reveal>
         )
     }
 }
