@@ -71,7 +71,7 @@ class AddEvent extends Component {
         })
         
         axios.get(
-            `/send-text?recipient=${text.recipient}&textmessage=``${this.props.name} has created a new event.``
+            `/send-text?recipient=${text.recipient}&textmessage=${this.props.name} has created a new event at ${this.state.address}`
           );
         await this.props.history.push(`/`)
     }
