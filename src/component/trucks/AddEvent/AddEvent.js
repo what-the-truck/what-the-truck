@@ -72,7 +72,7 @@ class AddEvent extends Component {
         })
         
         axios.get(
-            `/send-text?recipient=${text.recipient}&textmessage=${this.props.name} has created a new event on ${moment(this.state.date).format('LLLL')} at this location ${this.state.address}`
+            `/send-text?recipient=${text.recipient}&textmessage=${this.props.name} has created a new event on ${moment(this.state.date).format('llll')} at this location ${this.state.address}`
           );
         await this.props.history.push(`/`)
     }
