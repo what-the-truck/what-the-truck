@@ -8,6 +8,7 @@ import './TruckInfo.scss'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import moment from 'moment'
 import swal from 'sweetalert2'
+import Zoom from "react-reveal/Zoom"
 
 
 export class TruckInfo extends Component {
@@ -120,6 +121,8 @@ checkFollow=()=> {
     const { foodTruck } = this.state;
     let oneTruck = foodTruck.map(ele => {
       return (
+        <Zoom>
+
         <div className="truck-info-display" key={ele.truck_id} ele={ele}>
           <div>
             <div className="top-bar">
@@ -151,6 +154,7 @@ checkFollow=()=> {
 
             {this.state.truckEvents.map(el => {
               return (
+                <Zoom>
                 <div className="event-truck-box">
                   <h2>
                     {el.name}
@@ -160,6 +164,8 @@ checkFollow=()=> {
                   </h4>
                   <h3>{moment(el.date).format('ddd')}, {moment(el.date).format('ll')}</h3>
                 </div>
+
+                </Zoom>
               )
             })}
           </div>
@@ -176,6 +182,7 @@ checkFollow=()=> {
            </Map>
           </div>
         </div>
+        </Zoom>
       );
     });
     return <div className="truck-dash">{oneTruck}</div>;

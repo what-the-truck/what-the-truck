@@ -5,6 +5,8 @@ import { getFoodTruck } from "../../../ducks/truckReducer";
 import './TruckDash.scss'
 import axios from "axios";
 import moment from 'moment'
+import Zoom from 'react-reveal/Zoom'
+import Fade from 'react-reveal/Fade'
 
 export class TruckDash extends Component {
   constructor(props) {
@@ -78,6 +80,8 @@ export class TruckDash extends Component {
 
   render() {    
     return (
+      <Fade left>
+
       <div className="truck-dash-display">
         {/* <div className="top-bar">
           <h1>{this.state.foodtruck.name}</h1>
@@ -99,6 +103,8 @@ export class TruckDash extends Component {
         </div>
           {this.state.myEvents.map(el => {
             return (
+              <Fade left>
+
               <div className='event-truck-box'>
                 <h2>{el.name}</h2>
                 <h4>{el.address}</h4>
@@ -108,9 +114,11 @@ export class TruckDash extends Component {
                   <button onClick={() =>this.deleteEvent(el.event_id)}>Delete</button>
                 </div>
               </div>
+              </Fade>
             )
           })}
       </div>
+      </Fade>
     );
   }
 }

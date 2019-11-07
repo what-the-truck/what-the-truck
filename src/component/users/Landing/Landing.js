@@ -1,11 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../Landing/landing.scss'
+import Reveal from 'react-reveal/Reveal'
 
 
 
 export function Landing() {
     return (
+        <Reveal>
+
         <div className='button-options'>
             <div className="options-container">
             <Link className='link' to="/trucklist">
@@ -16,6 +19,7 @@ export function Landing() {
             </Link>
             </div>
         </div>
+        </Reveal>
     )
 }
 export default Landing

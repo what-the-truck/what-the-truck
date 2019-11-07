@@ -1,3 +1,8 @@
+@keyframes fadin {
+    from { opacity: 0; }
+    to   { opacity: 100 }
+}
+
 .button-options {
     height: 85vh;
     width: 100vw;

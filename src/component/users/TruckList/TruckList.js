@@ -4,18 +4,25 @@ import { connect } from "react-redux";
 import { withRouter} from "react-router-dom";
 import { getFoodTruck } from "../../../ducks/truckReducer";
 import "./TruckList.scss";
+import swal from "sweetalert2"
+import Fade from 'react-reveal/Fade'
+
+
+
 export class TruckList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       filteredTruck: [],
       filteredId: 0,
-      userInput: ""
+      userInput: "",
+      filtered: [],
     };
   }
 
   componentDidMount() {
     this.getTrucks();
+    this.getTruck();
   }
 
   getTrucks = () => {
@@ -31,12 +38,14 @@ export class TruckList extends Component {
     let {getFoodTruck} = this.props
     // console.log(this.props.getFoodTruck)
     let filteredTruck = this.props.foodTruck.filter(ele => {
-      return ele.food_type.toLowerCase().includes(this.state.userInput.toLowerCase()) || ele.name.toLowerCase().includes(this.state.userInput.toLowerCase());
+      return ele.food_type.toLowerCase().includes(this.state.userInput.toLowerCase()) || ele.name.toLowerCase().includes(this.state.userInput.toLowerCase()) || ele.description.toLowerCase().includes(this.state.userInput.toLowerCase());
     });
     if (filteredTruck[0]) {
-      getFoodTruck(filteredTruck)
+      this.setState({
+        filtered: filteredTruck
+      })
     } else {
-      alert("Truck Does Not Exist");
+      swal.fire({text: "No trucks found with that description", type: 'error'});
     }
   };
 
@@ -50,8 +59,10 @@ export class TruckList extends Component {
     // console.log(this.state.foodTruck);
     // console.log(this.props.foodTruck)
     const { foodTruck } = this.props;
-    let allTrucks = foodTruck.map(ele => {
+    let allTrucks = this.state.filtered.map(ele => {
       return (
+      
+            <Fade left>
         <div className="Trucks" key={ele.truck_id} ele={ele}>
           
           <div className="left-list">
@@ -71,9 +82,11 @@ export class TruckList extends Component {
             {/* <h1>Email:{ele.email}</h1> */}
           </div>
         </div>
+        </Fade>
       );
     });
-    return <div className="Truck-List">
+    return (
+    <div className="Truck-List">
       <div className="search">
         <input 
           type="text" 
@@ -85,8 +98,8 @@ export class TruckList extends Component {
       </div>
     {allTrucks}
     
-    </div>;
-  }
+    </div>
+    )}
 }
 
 function mapStateToProps(store) {

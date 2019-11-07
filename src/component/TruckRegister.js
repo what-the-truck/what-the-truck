@@ -5,6 +5,7 @@ import swal from 'sweetalert2'
 import {setTruck} from '../ducks/truckReducer'
 import {connect} from 'react-redux'
 import './TruckRegister.scss'
+import Reveal from 'react-reveal/Reveal'
 
 export class TruckRegister extends Component {
 
@@ -55,6 +56,8 @@ export class TruckRegister extends Component {
 
     render() {
         return (
+            <Reveal>
+
             <div className='truck-register'>
                 <div className="container-box">
                 <h1>Truck Registration</h1>
@@ -120,6 +123,7 @@ export class TruckRegister extends Component {
                 {/* </Link> */}
                 </div>
             </div>
+            </Reveal>
         )
     }
 }

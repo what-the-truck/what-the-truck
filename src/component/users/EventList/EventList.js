@@ -3,7 +3,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from 'moment'
-
+import Fade from 'react-reveal/Fade'
 import { getAttend } from "../../../ducks/truckReducer";
 import "./EventList.scss"
 
@@ -49,6 +49,8 @@ export class EventList extends Component {
     let { attend } = this.props;
     let newEvents = events.map(ele => {
       return (
+        <Fade left>
+
         <div className="events" key={ele.event_id} ele={ele}>
           <div className="event-box">
 
@@ -70,6 +72,7 @@ export class EventList extends Component {
 
           </div>
         </div>
+        </Fade>
       );
     });
     return <div className="event-list">
