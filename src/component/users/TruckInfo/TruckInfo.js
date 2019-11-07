@@ -89,16 +89,20 @@ checkFollow=()=> {
   };
   async followButton(){
     if(this.state.button === 'Follow +'){
-      swal.fire({
-        title: "Sweet!",
-        text: "You are now following this truck", 
-        imageUrl: this.state.foodTruck[0].img, 
-        imageWidth: 400,
-        imageHeight:200,
-        timer: 2500})
-      // alert('You are now following')
-      axios.post(`api/follow/${this.props.match.params.id}`, {userid:this.props.userId} ).then(this.checkFollow()
-      )
+      if(this.props.userId!== null){
+        swal.fire({
+          title: "Sweet!",
+          text: "You are now following this truck", 
+          imageUrl: this.state.foodTruck[0].img, 
+          imageWidth: 400,
+          imageHeight:200,
+          timer: 2500})
+        // alert('You are now following')
+        axios.post(`api/follow/${this.props.match.params.id}`, {userid:this.props.userId} ).then(this.checkFollow()
+        )
+      } else {
+        swal.fire({text: 'You need to register or login to follow a truck', type:'error'})
+      }
     }
     else{
       swal.fire({text:'No longer following', type: 'success', timer: 2000})
