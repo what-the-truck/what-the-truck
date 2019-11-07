@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux';
 import './AddEvent.scss'
 import swal from 'sweetalert2'
+import moment from 'moment'
 const {REACT_APP_TWILIO_RECIPIENT} = process.env
 
 
@@ -71,7 +72,7 @@ class AddEvent extends Component {
         })
         
         axios.get(
-            `/send-text?recipient=${text.recipient}&textmessage=${this.props.name} has created a new event at on ${this.state.date} at ${this.state.time} at this location ${this.state.address}`
+            `/send-text?recipient=${text.recipient}&textmessage=${this.props.name} has created a new event on ${moment(this.state.date).format('LLLL')} at this location ${this.state.address}`
           );
         await this.props.history.push(`/`)
     }

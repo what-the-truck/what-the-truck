@@ -178,7 +178,7 @@ checkFollow=()=> {
               google={this.props.google}
               zoom={7.3}
               style={mapStyles}
-              initialCenter={{ lat: 40.391617, lng: -111.850769 }}
+              initialCenter={{ lat: 40.7608, lng: -111.8910 }}
               >
                 {this.state.truckEvents.map(location => (
                   <Marker position={{ lat: location.latitude, lng: location.longitude}} /> 
